@@ -1,7 +1,8 @@
 import { Inject, Injectable, InjectionToken } from '@angular/core';
 import { Headers, Http } from '@angular/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable,merge,zip } from 'rxjs';
+import { map,pluck,concatMap,flatMap,filter,mergeMap,mergeAll,combineAll,concatAll,reduce } from 'rxjs/operators';
+import { SlicePipe } from '@angular/common/src/pipes';
 
 @Injectable({
   providedIn: 'root'
@@ -36,15 +37,49 @@ export class DataService {
   }
 
 public getDaysPerStatus():Observable<any> {
-  return this.getData()
-    .pipe(map((data,any) => {
-      console.log(data.issues);
-      return data.issues;
-    }))
-    .pipe(map((ticket,any) => {
-        console.log(ticket.key);
-        return ticket.key;
+  var obs = this.getData()
+    .pipe(map((data) => {
+      let a:Array<any> = [];
+      data.issues.forEach(issue => {
+        console.log("issue:");console.dir(issue);
+        a.push({
+          key: issue.key,
+          title: issue.fields.summary,
+          created: issue.fields.created,
+          updated: issue.fields.updated,
+          issuetype: issue.fields.issuetype.name,
+          project: issue.fields.project.name,
+          team: issue.fields.customfield_11716.value,
+          estimate: issue.fields.customfield_10002,
+          status: issue.fields.status.name,
+          statusId: issue.fields.status.id,
+          statusHistory: (function(changelog) {
+            let statusHistory:Array<any> = [];
+            changelog.histories.forEach(history => {
+              let statusHistoryItem = history.items.filter((historyItem) => historyItem.field == "status");
+              if (statusHistoryItem.length > 0) {
+                //console.log("statushistoryitems: "); console.dir(statusHistoryItem);
+                let sh = {
+                  fromDateTime: statusHistory.length > 0 ? statusHistory[statusHistory.length-1].toDateTime : issue.fields.created,
+                  toDateTime: history.created,
+                  transitionDurationHours: 0,
+                  transitionDurationDays: 0,
+                  from: statusHistoryItem[0]["fromString"],
+                  to: statusHistoryItem[0]["toString"]
+                };
+                sh.transitionDurationHours = Math.abs(new Date(sh.toDateTime) - new Date(sh.fromDateTime)) / (1000*60*60);
+                sh.transitionDurationDays = Math.abs(new Date(sh.toDateTime) - new Date(sh.fromDateTime)) / (86400000);
+                statusHistory.push(sh);
+              }
+            });
+            console.log("statusHistory:");console.dir(statusHistory);
+            return statusHistory;
+          })(issue.changelog)
+        });
+      });
+      return a;
     }));
+    return obs;
 }
 
   public getData():Observable<any> {

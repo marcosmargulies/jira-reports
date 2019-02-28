@@ -21,7 +21,8 @@ export class ChartAreaComponent implements OnInit {
       .subscribe((data) => {
         console.log("tickets from jira:");
         console.log(data);
-        //this.chartData = data; // TODO: format something here
+        this.chartData = data;
+        console.log(this.chartData);
       });
   }
 
