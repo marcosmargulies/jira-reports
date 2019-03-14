@@ -123,6 +123,8 @@ export class ChartAreaComponent implements OnInit {
                   }
                 });
               };
+              console.log('dumping flat stats');
+              console.dir(flattenedStatus);
               // map to buckets of Open, In Progress, Blocked, Code Review, Merged, TestInDev, TestInSit, Closed
               let arr: Array<any> = [];
               // if (flattenedStatus.find(i => i.status === 'Open')) {
@@ -141,9 +143,6 @@ export class ChartAreaComponent implements OnInit {
             })(d)
           }
         });
-        /*d.forEach(element => {
-          console.dir(element);
-        });*/
         this.chartData = d;
         //this.chartData.push(data[0]);
 
