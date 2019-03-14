@@ -3,6 +3,11 @@ import { DataService } from '../data-service.service';
 import { CommonModule } from '@angular/common';
 import { count } from 'rxjs/internal/operators/count';
 
+interface FlatStatus {
+  status: string,
+  duration: number
+}
+
 @Component({
   selector: 'app-chart-area',
   templateUrl: './chart-area.component.html',
@@ -11,10 +16,6 @@ import { count } from 'rxjs/internal/operators/count';
 export class ChartAreaComponent implements OnInit {
 
   constructor(private dataService:DataService) { 
-    // var data = dataService.getData();
-    // console.log("tickets from jira:");
-    // console.log(data);
-    // this.chartData = data; // TODO: format something here
   }
 
   ngOnInit() {
@@ -27,13 +28,13 @@ export class ChartAreaComponent implements OnInit {
           return {
             label: d.key,
             data: (function(element) {
-              const duration:Number = 86400000; // days
-              let flattenedStatus:Array<any> = [];
+              const duration:number = 86400000; // days
+              let flattenedStatus:FlatStatus[] = [];
               if (element.statusHistory.length == 0) {
                 // consider only current state as there is no status history recorded
                 flattenedStatus.push({
                   status: element.status,
-                  duration: Math.abs(Date.now() - new Date(element.created)) / duration
+                  duration: Math.abs(Date.now() - new Date(element.created).getTime()) / duration
                 });
               } else {
                 element.statusHistory.forEach(sh => {
@@ -81,7 +82,7 @@ export class ChartAreaComponent implements OnInit {
                       break;
                     case 'OnSitEnv':
                     case 'InTestInSit':
-                      statusName = 'ON SIT env';
+                      statusName = 'On SIT env';
                       break;
                     case 'OatReady':
                       statusName = 'OAT Ready';
@@ -102,14 +103,32 @@ export class ChartAreaComponent implements OnInit {
                       statusName = 'Not mapped: ' + sh.from;
                       break;
                   }
-                  flattenedStatus.push({
-                    status: statusName,
-                    duration: sh.transitionDurationDays 
-                  });
+                  // add or update // TODO: specialized Dic-object for that
+                  if (flattenedStatus.find(i => i.status === statusName)) {
+                    let fs = flattenedStatus.find(i => i.status === statusName);
+                    fs.duration += sh.transitionDurationDays;
+                  } else {
+                    flattenedStatus.push({
+                      status: statusName,
+                      duration: sh.transitionDurationDays 
+                    });
+                  }
                 });
               };
+              // map to buckets of Open, In Progress, Blocked, Code Review, Merged, TestInDev, TestInSit, Closed
               let arr:Array<any> = [];
-
+              // if (flattenedStatus.find(i => i.status === 'Open')) {
+                // arr.push
+              // }
+              let tmpVal:FlatStatus;
+              arr.push((tmpVal = flattenedStatus.find(i => i.status === 'Open')) ? tmpVal.duration : 0);
+              arr.push((tmpVal = flattenedStatus.find(i => i.status === 'WIP')) ? tmpVal.duration : 0);
+              arr.push((tmpVal = flattenedStatus.find(i => i.status === 'Blocked')) ? tmpVal.duration : 0);
+              arr.push((tmpVal = flattenedStatus.find(i => i.status === 'Code Review')) ? tmpVal.duration : 0);
+              arr.push((tmpVal = flattenedStatus.find(i => i.status === 'Merged')) ? tmpVal.duration : 0);
+              arr.push((tmpVal = flattenedStatus.find(i => i.status === 'Dev test')) ? tmpVal.duration : 0);
+              arr.push((tmpVal = flattenedStatus.find(i => i.status === 'On SIT env')) ? tmpVal.duration : 0);
+              arr.push((tmpVal = flattenedStatus.find(i => i.status === 'Closed')) ? tmpVal.duration : 0);
               return arr;
             })(d)
           }
@@ -117,6 +136,7 @@ export class ChartAreaComponent implements OnInit {
         d.forEach(element => {
           console.dir(element);
         });
+        this.chartData = d;
         //this.chartData.push(data[0]);
 
         //console.log(this.chartData);

@@ -67,8 +67,8 @@ public getDaysPerStatus():Observable<any> {
                   from: statusHistoryItem[0]["fromString"],
                   to: statusHistoryItem[0]["toString"]
                 };
-                sh.transitionDurationHours = Math.abs(new Date(sh.toDateTime) - new Date(sh.fromDateTime)) / (1000*60*60);
-                sh.transitionDurationDays = Math.abs(new Date(sh.toDateTime) - new Date(sh.fromDateTime)) / (86400000);
+                sh.transitionDurationHours = Math.abs(new Date(sh.toDateTime).getTime() - new Date(sh.fromDateTime).getTime()) / (1000*60*60);
+                sh.transitionDurationDays = Math.abs(new Date(sh.toDateTime).getTime() - new Date(sh.fromDateTime).getTime()) / (86400000);
                 statusHistory.push(sh);
               }
             });
