@@ -1,3 +1,9 @@
+<div>
+  JIRA query
+  <input #box (keyup.enter)="onEnter(box.value)" width="400px">
+  <p>{{query}}</p>
+</div>
+
 <div class="row" *ngIf="chartData.length == 0">
   <div class="col-md-6">
     No data
@@ -6,13 +12,8 @@
 <div class="row" *ngIf="chartData.length > 0">
   <div class="col-md-6">
     <div style="display: block;">
-      <canvas baseChart width="400" height="400" 
-        [datasets]="chartData" 
-        [labels]="chartLabels" 
-        [options]="chartOptions"
-        [legend]="chartLegend" 
-        [chartType]="chartType" 
-        (chartHover)="chartHovered($event)" 
+      <canvas baseChart width="400" height="400" [datasets]="chartData" [labels]="chartLabels" [options]="chartOptions"
+        [legend]="chartLegend" [chartType]="chartType" (chartHover)="chartHovered($event)"
         (chartClick)="chartClicked($event)"></canvas>
     </div>
   </div>
@@ -25,6 +26,5 @@
         <td *ngFor="let label of chartLabels; let j=index">{{d && d.data[j]}}</td>
       </tr>
     </table>
-    <!-- <button (click)="randomize()">CLICK</button> -->
   </div>
 </div>
