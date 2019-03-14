@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from '../data-service.service';
 import { CommonModule } from '@angular/common';
 import { count } from 'rxjs/internal/operators/count';
+import { query } from '@angular/core/src/render3';
 
 interface FlatStatus {
   status: string,
@@ -15,21 +16,27 @@ interface FlatStatus {
 })
 export class ChartAreaComponent implements OnInit {
 
-  constructor(private dataService:DataService) { 
+  query = '';
+
+  constructor(private dataService: DataService) {
   }
 
   ngOnInit() {
-    this.dataService.getDaysPerStatus()
+
+  }
+
+  createChart() {
+    this.dataService.getDaysPerStatus(this.query)
       .subscribe((data) => {
-        console.log("tickets from jira:"); console.dir(data);
+        //console.log("tickets from jira:"); console.dir(data);
         let d = data.map((d) => {
           // console.log("data:"); console.dir(d);
           // map to buckets of Open, In Progress, Blocked, Code Review, Merged, TestInDev, TestInSit, Closed
           return {
             label: d.key,
-            data: (function(element) {
-              const duration:number = 86400000; // days
-              let flattenedStatus:FlatStatus[] = [];
+            data: (function (element) {
+              const duration: number = 86400000; // days
+              let flattenedStatus: FlatStatus[] = [];
               if (element.statusHistory.length == 0) {
                 // consider only current state as there is no status history recorded
                 flattenedStatus.push({
@@ -38,69 +45,70 @@ export class ChartAreaComponent implements OnInit {
                 });
               } else {
                 element.statusHistory.forEach(sh => {
-                  let statusName:string = '';
-                  switch (sh.from) {
-                    case 'Backlog':
-                    case 'Open':
-                    case 'Reopened':
-                    case 'Reopen':
-                    case 'ToDo':
-                    case 'Created':
+                  let statusName: string = '';
+                  switch (sh.from.split(' ').join('').toLowerCase()) {
+                    case 'backlog':
+                    case 'open':
+                    case 'reopened':
+                    case 'reopen':
+                    case 'todo':
+                    case 'created':
                       statusName = 'Open';
                       break;
-                    case 'InProgress':
+                    case 'inprogress':
                       statusName = 'WIP';
                       break;
-                    case 'Blocked':
+                    case 'blocked':
                       statusName = 'Blocked';
                       break;
-                    case 'CodeReview':
+                    case 'codereview':
                       statusName = 'Code Review';
                       break;
-                    case 'Merged':
+                    case 'merged':
                       statusName = 'Merged';
                       break;
-                    case 'OnTestEnv':
-                    case 'InTestInTst':
+                    case 'ontestenv':
+                    case 'intestintst':
                       statusName = 'On Test Env';
                       break;
-                    case 'ReadyForMergeToDev':
+                    case 'readyformergetodev':
                       statusName = 'Ready to merge to DEV';
                       break;
-                    case 'InTestInDev':
-                    case 'InDevQA':
+                    case 'intestindev':
+                    case 'indevqa':
                       statusName = 'Dev test';
                       break;
-                    case 'ReadyForMergeToMaster':
-                    case 'MergedToMaster':
-                    case 'FixToMaster':
-                    case 'MasterFixCodeReview':
+                    case 'readyformergetomaster':
+                    case 'mergedtomaster':
+                    case 'fixtomaster':
+                    case 'masterfixcodereview':
                       statusName = 'Merging to Master';
                       break;
-                    case 'SitReady':
+                    case 'sitready':
                       statusName = 'SIT ready';
                       break;
-                    case 'OnSitEnv':
-                    case 'InTestInSit':
+                    case 'onsitenv':
+                    case 'intestinsit':
                       statusName = 'On SIT env';
                       break;
-                    case 'OatReady':
+                    case 'oatready':
                       statusName = 'OAT Ready';
                       break;
-                    case 'OnOatEnv':
+                    case 'anaatenv':
                       statusName = 'On OAT Env';
                       break;
-                    case 'ProductionReady':
+                    case 'productionready':
                       statusName = 'PROD Ready';
                       break;
-                    case 'Live':
-                    case 'Closed':
-                    case 'Done':
-                    case 'Rejected':
+                    case 'live':
+                    case 'closed':
+                    case 'done':
+                    case 'rejected':
                       statusName = 'Closed';
                       break;
                     default:
                       statusName = 'Not mapped: ' + sh.from;
+                      console.error('status not mapped: ' + statusName);
                       break;
                   }
                   // add or update // TODO: specialized Dic-object for that
@@ -110,17 +118,17 @@ export class ChartAreaComponent implements OnInit {
                   } else {
                     flattenedStatus.push({
                       status: statusName,
-                      duration: sh.transitionDurationDays 
+                      duration: sh.transitionDurationDays
                     });
                   }
                 });
               };
               // map to buckets of Open, In Progress, Blocked, Code Review, Merged, TestInDev, TestInSit, Closed
-              let arr:Array<any> = [];
+              let arr: Array<any> = [];
               // if (flattenedStatus.find(i => i.status === 'Open')) {
-                // arr.push
+              // arr.push
               // }
-              let tmpVal:FlatStatus;
+              let tmpVal: FlatStatus;
               arr.push((tmpVal = flattenedStatus.find(i => i.status === 'Open')) ? tmpVal.duration : 0);
               arr.push((tmpVal = flattenedStatus.find(i => i.status === 'WIP')) ? tmpVal.duration : 0);
               arr.push((tmpVal = flattenedStatus.find(i => i.status === 'Blocked')) ? tmpVal.duration : 0);
@@ -133,9 +141,9 @@ export class ChartAreaComponent implements OnInit {
             })(d)
           }
         });
-        d.forEach(element => {
+        /*d.forEach(element => {
           console.dir(element);
-        });
+        });*/
         this.chartData = d;
         //this.chartData.push(data[0]);
 
@@ -144,8 +152,8 @@ export class ChartAreaComponent implements OnInit {
   }
 
   // let data:Array<any> = [
-    //   { data: [23.6514946519796, 3.31491141831972, 0.668417511820244, 0.969977977951708, 0, 1.23725997244995, 2.54439801743686], label: 'Average ' },
-    //   { data: [0, 0, 0, 0, 0, 0, 0], label: 'TP-3069' },
+  //   { data: [23.6514946519796, 3.31491141831972, 0.668417511820244, 0.969977977951708, 0, 1.23725997244995, 2.54439801743686], label: 'Average ' },
+  //   { data: [0, 0, 0, 0, 0, 0, 0], label: 'TP-3069' },
   public chartData: Array<any> = [];
 
   public chartLabels: Array<any> = ['Open', 'In Progress', 'Blocked', 'Code Review', 'Merged', 'On Test Env', 'Closed'];
@@ -189,5 +197,10 @@ export class ChartAreaComponent implements OnInit {
 
   public chartHovered(e: any): void {
     console.log(e);
+  }
+
+  onEnter(value: string) {
+    this.query = value;//.replace('"', '\\"');
+    this.createChart();
   }
 }
