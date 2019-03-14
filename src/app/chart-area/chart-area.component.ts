@@ -125,7 +125,7 @@ export class ChartAreaComponent implements OnInit {
               arr.push((tmpVal = flattenedStatus.find(i => i.status === 'WIP')) ? tmpVal.duration : 0);
               arr.push((tmpVal = flattenedStatus.find(i => i.status === 'Blocked')) ? tmpVal.duration : 0);
               arr.push((tmpVal = flattenedStatus.find(i => i.status === 'Code Review')) ? tmpVal.duration : 0);
-              arr.push((tmpVal = flattenedStatus.find(i => i.status === 'Merged')) ? tmpVal.duration : 0);
+              arr.push((tmpVal = flattenedStatus.find(i => i.status === 'Ready to merge to DEV')) ? tmpVal.duration : 0);
               arr.push((tmpVal = flattenedStatus.find(i => i.status === 'Dev test')) ? tmpVal.duration : 0);
               arr.push((tmpVal = flattenedStatus.find(i => i.status === 'On SIT env')) ? tmpVal.duration : 0);
               arr.push((tmpVal = flattenedStatus.find(i => i.status === 'Closed')) ? tmpVal.duration : 0);
@@ -136,6 +136,7 @@ export class ChartAreaComponent implements OnInit {
         // d.forEach(element => {
         //   console.dir(element);
         // });
+        console.log('d:');
         console.dir(d);
         this.chartData = d;
         //this.chartData.push(data[0]);
@@ -149,7 +150,7 @@ export class ChartAreaComponent implements OnInit {
     //   { data: [0, 0, 0, 0, 0, 0, 0], label: 'TP-3069' },
   public chartData: Array<any> = [];
 
-  public chartLabels: Array<any> = ['Open', 'In Progress', 'Blocked', 'Code Review', 'Merged', 'On Test Env', 'Closed'];
+  public chartLabels: Array<any> = ['Open', 'In Progress', 'Blocked', 'Code Review', 'Ready to merge to DEV', 'Dev Test', 'On SIT env', 'Closed'];
 
   public chartOptions: any = {
     responsive: true
