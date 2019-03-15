@@ -124,8 +124,8 @@ export class ChartAreaComponent implements OnInit {
                   }
                 });
               };
-              console.log('dumping flat stats');
-              console.dir(flattenedStatus);
+              //console.log('dumping flat stats');
+              //console.dir(flattenedStatus);
               // map to buckets of Open, In Progress, Blocked, Code Review, Merged, TestInDev, TestInSit, Closed
               let arr: Array<any> = [];
               // if (flattenedStatus.find(i => i.status === 'Open')) {
@@ -147,8 +147,8 @@ export class ChartAreaComponent implements OnInit {
         // d.forEach(element => {
         //   console.dir(element);
         // });
-        console.log('d:');
-        console.dir(d);
+        //console.log('d:');
+        //console.dir(d);
         this.chartData = d;
         //this.chartData.push(data[0]);
 
@@ -156,9 +156,6 @@ export class ChartAreaComponent implements OnInit {
       });
   }
 
-  // let data:Array<any> = [
-  //   { data: [23.6514946519796, 3.31491141831972, 0.668417511820244, 0.969977977951708, 0, 1.23725997244995, 2.54439801743686], label: 'Average ' },
-  //   { data: [0, 0, 0, 0, 0, 0, 0], label: 'TP-3069' },
   public chartData: Array<any> = [];
 
   public chartLabels: Array<any> = ['Open', 'In Progress', 'Blocked', 'Code Review', 'Ready to merge to DEV', 'Dev Test', 'On SIT env', 'Closed'];
@@ -166,38 +163,26 @@ export class ChartAreaComponent implements OnInit {
   public chartOptions: any = {
     responsive: true
   };
-  public chartColors: Array<any> = [
-    { // grey
-      backgroundColor: 'rgba(148,159,177,0.2)',
-      borderColor: 'rgba(148,159,177,1)',
-      pointBackgroundColor: 'rgba(148,159,177,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
-    },
-    { // dark grey
-      backgroundColor: 'rgba(77,83,96,0.2)',
-      borderColor: 'rgba(77,83,96,1)',
-      pointBackgroundColor: 'rgba(77,83,96,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(77,83,96,1)'
-    },
-    { // grey
-      backgroundColor: 'rgba(148,159,177,0.2)',
-      borderColor: 'rgba(148,159,177,1)',
-      pointBackgroundColor: 'rgba(148,159,177,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
-    }
-  ];
+
   public chartLegend: boolean = true;
   public chartType: string = 'bar';
 
   // events
   public chartClicked(e: any): void {
-    console.log(e);
+    if (e.active.length > 0) {
+      const chart = e.active[0]._chart;
+      const activePoints = chart.getElementAtEvent(e.event);
+      if (activePoints.length > 0) {
+        const datasetLabel = activePoints[0]._model.datasetLabel;
+        // get the internal index of slice in chart
+        const clickedElementIndex = activePoints[0]._index;
+        const label = chart.data.labels[clickedElementIndex];
+        // get value by index
+        const value = chart.data.datasets[0].data[clickedElementIndex];
+        //console.log(clickedElementIndex, label, value, datasetLabel)
+        window.open('https://jira.ryanair.com:8443/browse/' + datasetLabel, '_blank');
+      }
+    }
   }
 
   public chartHovered(e: any): void {
@@ -205,7 +190,7 @@ export class ChartAreaComponent implements OnInit {
   }
 
   onEnter(value: string) {
-    this.query = value;//.replace('"', '\\"');
+    this.query = value;
     this.createChart();
   }
 }

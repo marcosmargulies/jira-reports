@@ -23,7 +23,7 @@
         <th *ngFor="let label of chartLabels">{{label}}</th>
       </tr>
       <tr *ngFor="let d of chartData">
-        <td *ngFor="let label of chartLabels; let j=index">{{d && d.data[j]}}</td>
+        <td *ngFor="let label of chartLabels; let j=index">{{d && d.data[j] | number:'1.0-2'}}</td>
       </tr>
     </table>
   </div>
