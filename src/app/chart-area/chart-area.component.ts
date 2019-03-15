@@ -22,7 +22,8 @@ export class ChartAreaComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.query = 'project = "Trip Planner" and "Scrum Team" = "Space Invaders" and Sprint in (openSprints())';
+    this.createChart();
   }
 
   createChart() {
