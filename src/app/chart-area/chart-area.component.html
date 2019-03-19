@@ -1,7 +1,7 @@
 <div>
   JIRA query
-  <input #box (keyup.enter)="onEnter(box.value)" width="400px">
-  <p>{{query}}</p>
+  <input #box (keyup.enter)="onEnter(box.value)" width="400px" />
+  <p>{{ query }}</p>
 </div>
 
 <div class="row" *ngIf="chartData.length == 0">
@@ -12,12 +12,21 @@
 <div class="row" *ngIf="chartData.length > 0">
   <div class="col-md-6">
     <div style="display: block;">
-      <canvas baseChart width="400" height="400" [datasets]="chartData" [labels]="chartLabels" [options]="chartOptions"
-        [legend]="chartLegend" [chartType]="chartType" (chartHover)="chartHovered($event)"
-        (chartClick)="chartClicked($event)"></canvas>
+      <canvas
+        baseChart
+        width="400"
+        height="400"
+        [datasets]="chartData"
+        [labels]="chartLabels"
+        [options]="chartOptions"
+        [legend]="chartLegend"
+        [chartType]="chartType"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"
+      ></canvas>
     </div>
   </div>
-  <div class="col-md-6" style="margin-bottom: 10px">
+  <!-- <div class="col-md-6" style="margin-bottom: 10px">
     <table class="table table-responsive table-condensed">
       <tr>
         <th *ngFor="let label of chartLabels">{{label}}</th>
@@ -26,5 +35,5 @@
         <td *ngFor="let label of chartLabels; let j=index">{{d && d.data[j] | number:'1.0-2'}}</td>
       </tr>
     </table>
-  </div>
+  </div>-->
 </div>

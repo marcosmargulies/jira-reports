@@ -53,6 +53,7 @@ export class ChartAreaComponent implements OnInit {
                     .join("")
                     .toLowerCase()
                 ) {
+                  case "new":
                   case "backlog":
                   case "open":
                   case "reopened":
@@ -100,7 +101,7 @@ export class ChartAreaComponent implements OnInit {
                   case "oatready":
                     statusName = "OAT Ready";
                     break;
-                  case "anaatenv":
+                  case "onoatenv":
                     statusName = "On OAT Env";
                     break;
                   case "productionready":
@@ -216,26 +217,30 @@ export class ChartAreaComponent implements OnInit {
   public chartLegend: boolean = true;
   public chartType: string = "bar";
 
-  // TODO Average only of values that exist in that series, not full
   public calculateAverage() {
-    let average: Array<number> = [];
+    let average = {
+      label: "Average",
+      type: "line",
+      data: Array<number>()
+    };
+    let control: Array<number> = [];
+
     for (let l in this.chartLabels) {
-      average[l] = 0;
+      average.data[l] = 0;
+      control[l] = 0;
     }
     for (let d of this.chartData) {
       for (var _i = 0; _i < d.data.length; _i++) {
-        average[_i] += d.data[_i];
+        if (d.data[_i] > 0) {
+          control[_i]++;
+          average.data[_i] += d.data[_i];
+        }
       }
     }
-    for (let data in average) {
-      average[data] = average[data] / this.chartData.length;
+    for (let data in average.data) {
+      average.data[data] = average.data[data] / control[data];
     }
-    let z = {
-      label: "Average",
-      type: "line",
-      data: average
-    };
-    this.chartData.push(z);
+    this.chartData.push(average);
     console.log(average);
   }
 
@@ -252,10 +257,12 @@ export class ChartAreaComponent implements OnInit {
         // get value by index
         const value = chart.data.datasets[0].data[clickedElementIndex];
         //console.log(clickedElementIndex, label, value, datasetLabel)
-        window.open(
-          "https://jira.ryanair.com:8443/browse/" + datasetLabel,
-          "_blank"
-        );
+        if (datasetLabel) {
+          window.open(
+            "https://jira.ryanair.com:8443/browse/" + datasetLabel,
+            "_blank"
+          );
+        }
       }
     }
   }
