@@ -20,8 +20,9 @@ export class ChartAreaComponent implements OnInit {
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
-    this.query =
-      'project = "Trip Planner" and "Scrum Team" = "Space Invaders" and Sprint in (openSprints())';
+    this.query = "key=TP-2736";
+    //"project ="Rooms V2 (March)" and Sprint in (1967) and type in (Story, Task, Improvement, Bug)";
+    //'project = "Trip Planner" and "Scrum Team" = "Space Invaders" and Sprint in (openSprints())';
     this.createChart();
   }
 
@@ -238,10 +239,11 @@ export class ChartAreaComponent implements OnInit {
       }
     }
     for (let data in average.data) {
-      average.data[data] = average.data[data] / control[data];
+      if (control[data] > 0) {
+        average.data[data] = average.data[data] / control[data];
+      }
     }
     this.chartData.push(average);
-    console.log(average);
   }
 
   // events
@@ -272,6 +274,7 @@ export class ChartAreaComponent implements OnInit {
   }
 
   onEnter(value: string) {
+    this.chartData = new Array<any>();
     this.query = value;
     this.createChart();
   }

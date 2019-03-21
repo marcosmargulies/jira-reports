@@ -48,7 +48,7 @@ export class DataService {
       map(data => {
         let a: Array<any> = [];
         data.issues.forEach(issue => {
-          //console.log("issue:");console.dir(issue);
+          //console.log("issue:"); console.dir(issue);
           a.push({
             key: issue.key,
             title: issue.fields.summary,
