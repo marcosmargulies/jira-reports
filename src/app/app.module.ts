@@ -7,8 +7,8 @@ import { AppComponent } from './app.component';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { ChartAreaComponent } from './chart-area/chart-area.component';
-import { HttpModule } from '@angular/http';
 import { DataService } from 'src/app/services/data-service.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { DataService } from 'src/app/services/data-service.service';
   ],
   imports: [
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     AppRoutingModule,
     ChartsModule,
     CommonModule

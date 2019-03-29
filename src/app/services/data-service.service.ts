@@ -1,20 +1,20 @@
-import { Inject, Injectable, InjectionToken } from '@angular/core';
-import { Headers, Http } from '@angular/http';
-import { Observable, merge, zip } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  private headers: Headers = new Headers({
+  private headers: HttpHeaders = new HttpHeaders({
     'Content-type': 'application/json'
   });
   private jiraUrl = 'https://jira.ryanair.com:8443/rest/api/2/';
   private username = 'username';
   private pass = 'password';
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
   private setAuth(username: string, pass: string) {
     this.username = username;
@@ -36,7 +36,7 @@ export class DataService {
   private post(url: string, body: any): Observable<any> {
     return this.http
       .post(url, body, { headers: this.headers, withCredentials: true })
-      .pipe(map((response, any) => response.json()));
+      .pipe(map((response, any) => response));
   }
 
   private handleError(error: any): void {
@@ -74,50 +74,40 @@ export class DataService {
               });
               for (let _i = 0; _i < filteredStatusHistory.length; _i++) {
                 const status = filteredStatusHistory[_i];
+                const fromDt = statusHistory.length > 0 ? statusHistory[statusHistory.length - 1].toDateTime : issue.fields.created;
+
                 const sh = {
-                  fromDateTime:
-                    statusHistory.length > 0
-                      ? statusHistory[statusHistory.length - 1].toDateTime
-                      : issue.fields.created,
+                  fromDateTime: fromDt,
                   toDateTime: status.created,
                   transitionDurationHours: 0,
                   transitionDurationDays: 0,
                   from: status[0]['fromString'],
                   to: status[0]['toString']
-                }
+                };
                 sh.transitionDurationHours =
-                  Math.abs(
-                    new Date(sh.toDateTime).getTime() -
-                    new Date(sh.fromDateTime).getTime()
-                  ) /
-                  (1000 * 60 * 60);
+                  Math.abs(new Date(sh.toDateTime).getTime() - new Date(sh.fromDateTime).getTime()) / (1000 * 60 * 60);
                 sh.transitionDurationDays =
-                  Math.abs(
-                    new Date(sh.toDateTime).getTime() -
-                    new Date(sh.fromDateTime).getTime()
-                  ) / 86400000;
+                  Math.abs(new Date(sh.toDateTime).getTime() - new Date(sh.fromDateTime).getTime()) / 86400000;
+
+                // const sh = this.createIssueLog(fromDt, status.created, status[0]['fromString'], status[0]['toString']);
                 statusHistory.push(sh);
 
-                if (_i === filteredStatusHistory.length - 1) { // Add last status
-                  const last = {
+                if (_i === filteredStatusHistory.length - 1) {
+                  const shLast = {
                     fromDateTime: status.created,
                     toDateTime: Date.now(),
                     transitionDurationHours: 0,
                     transitionDurationDays: 0,
                     from: status[0]['toString'],
+                    to: null
                   };
-                  last.transitionDurationHours =
-                    Math.abs(
-                      new Date(last.toDateTime).getTime() -
-                      new Date(last.fromDateTime).getTime()
-                    ) /
-                    (1000 * 60 * 60);
-                  last.transitionDurationDays =
-                    Math.abs(
-                      new Date(last.toDateTime).getTime() -
-                      new Date(last.fromDateTime).getTime()
-                    ) / 86400000;
-                  statusHistory.push(last);
+                  shLast.transitionDurationHours =
+                    Math.abs(new Date(shLast.toDateTime).getTime() - new Date(shLast.fromDateTime).getTime()) / (1000 * 60 * 60);
+                  shLast.transitionDurationDays =
+                    Math.abs(new Date(shLast.toDateTime).getTime() - new Date(shLast.fromDateTime).getTime()) / 86400000;
+
+                  // const shLast = this.createIssueLog(this.createIssueLog(status.created, Date.now(), status[0]['toString'], null));
+                  statusHistory.push(shLast);
                 }
               }
               return statusHistory;
@@ -130,7 +120,23 @@ export class DataService {
     );
     return obs;
   }
+  /*
+    public createIssueLog(fromDateTime: Date, toDateTime: Date, fromStatus: string, toStatus: string): any {
 
+      const sh = {
+        fromDateTime: fromDateTime,
+        toDateTime: toDateTime,
+        transitionDurationHours: 0,
+        transitionDurationDays: 0,
+        from: fromStatus,
+        to: toStatus
+      };
+      sh.transitionDurationHours = Math.abs(new Date(sh.toDateTime).getTime() - new Date(sh.fromDateTime).getTime()) / (1000 * 60 * 60);
+      sh.transitionDurationDays = Math.abs(new Date(sh.toDateTime).getTime() - new Date(sh.fromDateTime).getTime()) / 86400000;
+
+      return sh;
+    }
+  */
   public getData(query: string): Observable<any> {
     return this.getIssues(query);
   }
