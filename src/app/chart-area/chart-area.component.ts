@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { DataService } from "../data-service.service";
-import { CommonModule } from "@angular/common";
-import { count } from "rxjs/internal/operators/count";
-import { query } from "@angular/core/src/render3";
+import { Component, OnInit, Input } from '@angular/core';
+import { DataService } from '../services/data-service.service';
+import { CommonModule } from '@angular/common';
+import { count } from 'rxjs/internal/operators/count';
+import { query } from '@angular/core/src/render3';
 
 interface FlatStatus {
   status: string;
@@ -10,34 +10,54 @@ interface FlatStatus {
 }
 
 @Component({
-  selector: "app-chart-area",
-  templateUrl: "./chart-area.component.html",
-  styleUrls: ["./chart-area.component.css"]
+  selector: 'app-chart-area',
+  templateUrl: './chart-area.component.html',
+  styleUrls: ['./chart-area.component.css']
 })
 export class ChartAreaComponent implements OnInit {
-  query = "";
+  constructor(private dataService: DataService) { }
+  query = '';
 
-  constructor(private dataService: DataService) {}
+  public chartData: Array<any> = [];
+
+  public chartLabels: Array<any> = [
+    'Open',
+    'In Progress',
+    'Blocked',
+    'Code Review',
+    'Ready to merge to DEV',
+    'Dev Test',
+    'On SIT env',
+    'Closed'
+  ];
+
+  public chartOptions: any = {
+    responsive: true
+  };
+
+  public chartLegend = true;
+  public chartType = 'bar';
 
   ngOnInit() {
-    this.query = "key=TP-2736";
-    //"project ="Rooms V2 (March)" and Sprint in (1967) and type in (Story, Task, Improvement, Bug)";
-    //'project = "Trip Planner" and "Scrum Team" = "Space Invaders" and Sprint in (openSprints())';
+    this.query = 'key=TP-2736';
+    // "project ="Rooms V2 (March)" and Sprint in (1967) and type in (Story, Task, Improvement, Bug)";
+    // 'project = "Trip Planner" and "Scrum Team" = "Space Invaders" and Sprint in (openSprints())';
     this.createChart();
   }
 
   createChart() {
     this.dataService.getDaysPerStatus(this.query).subscribe(data => {
-      //console.log("tickets from jira:"); console.dir(data);
-      let d = data.map(d => {
+      console.log('tickets from jira:');
+      console.dir(data);
+      const chartData = data.map(d => {
         // console.log("data:"); console.dir(d);
         // map to buckets of Open, In Progress, Blocked, Code Review, Merged, TestInDev, TestInSit, Closed
         return {
           label: d.key,
-          data: (function(element) {
-            const duration: number = 86400000; // days
-            let flattenedStatus: FlatStatus[] = [];
-            if (element.statusHistory.length == 0) {
+          data: (function (element) {
+            const duration = 86400000; // days
+            const flattenedStatus: FlatStatus[] = [];
+            if (element.statusHistory.length === 0) {
               // consider only current state as there is no status history recorded
               flattenedStatus.push({
                 status: element.status,
@@ -47,81 +67,81 @@ export class ChartAreaComponent implements OnInit {
               });
             } else {
               element.statusHistory.forEach(sh => {
-                let statusName: string = "";
+                let statusName = '';
                 switch (
-                  sh.from
-                    .split(" ")
-                    .join("")
-                    .toLowerCase()
+                sh.from
+                  .split(' ')
+                  .join('')
+                  .toLowerCase()
                 ) {
-                  case "new":
-                  case "backlog":
-                  case "open":
-                  case "reopened":
-                  case "reopen":
-                  case "todo":
-                  case "created":
-                    statusName = "Open";
+                  case 'new':
+                  case 'backlog':
+                  case 'open':
+                  case 'reopened':
+                  case 'reopen':
+                  case 'todo':
+                  case 'created':
+                    statusName = 'Open';
                     break;
-                  case "inprogress":
-                    statusName = "WIP";
+                  case 'inprogress':
+                    statusName = 'WIP';
                     break;
-                  case "blocked":
-                    statusName = "Blocked";
+                  case 'blocked':
+                    statusName = 'Blocked';
                     break;
-                  case "codereview":
-                    statusName = "Code Review";
+                  case 'codereview':
+                    statusName = 'Code Review';
                     break;
-                  case "merged":
-                    statusName = "Merged";
+                  case 'merged':
+                    statusName = 'Merged';
                     break;
-                  case "ontestenv":
-                  case "intestintst":
-                    statusName = "On Test Env";
+                  case 'ontestenv':
+                  case 'intestintst':
+                    statusName = 'On Test Env';
                     break;
-                  case "readyformergetodev":
-                    statusName = "Ready to merge to DEV";
+                  case 'readyformergetodev':
+                    statusName = 'Ready to merge to DEV';
                     break;
-                  case "intestindev":
-                  case "indevqa":
-                    statusName = "Dev test";
+                  case 'intestindev':
+                  case 'indevqa':
+                    statusName = 'Dev test';
                     break;
-                  case "readyformergetomaster":
-                  case "mergedtomaster":
-                  case "fixtomaster":
-                  case "masterfixcodereview":
-                    statusName = "Merging to Master";
+                  case 'readyformergetomaster':
+                  case 'mergedtomaster':
+                  case 'fixtomaster':
+                  case 'masterfixcodereview':
+                    statusName = 'Merging to Master';
                     break;
-                  case "sitready":
-                    statusName = "SIT ready";
+                  case 'sitready':
+                    statusName = 'SIT ready';
                     break;
-                  case "onsitenv":
-                  case "intestinsit":
-                    statusName = "On SIT env";
+                  case 'onsitenv':
+                  case 'intestinsit':
+                    statusName = 'On SIT env';
                     break;
-                  case "oatready":
-                    statusName = "OAT Ready";
+                  case 'oatready':
+                    statusName = 'OAT Ready';
                     break;
-                  case "onoatenv":
-                    statusName = "On OAT Env";
+                  case 'onoatenv':
+                    statusName = 'On OAT Env';
                     break;
-                  case "productionready":
-                    statusName = "PROD Ready";
+                  case 'productionready':
+                    statusName = 'PROD Ready';
                     break;
-                  case "live":
-                  case "closed":
-                  case "done":
-                  case "rejected":
-                    statusName = "Closed";
+                  case 'live':
+                  case 'closed':
+                  case 'done':
+                  case 'rejected':
+                    statusName = 'Closed';
                     break;
                   default:
-                    statusName = "Not mapped: " + sh.from;
-                    console.error("status not mapped: " + statusName);
+                    statusName = 'Not mapped: ' + sh.from;
+                    console.error('status not mapped: ' + statusName);
                     break;
                 }
                 // add or update // TODO: specialized Dic-object for that
                 if (flattenedStatus.find(i => i.status === statusName)) {
-                  let fs = flattenedStatus.find(i => i.status === statusName);
+                  const fs = flattenedStatus.find(i => i.status === statusName);
                   fs.duration += sh.transitionDurationDays;
                 } else {
                   flattenedStatus.push({
@@ -131,53 +151,53 @@ export class ChartAreaComponent implements OnInit {
                 }
               });
             }
-            //console.log('dumping flat stats');
-            //console.dir(flattenedStatus);
+            // console.log('dumping flat stats');
+            // console.dir(flattenedStatus);
             // map to buckets of Open, In Progress, Blocked, Code Review, Merged, TestInDev, TestInSit, Closed
-            let arr: Array<any> = [];
+            const arr: Array<any> = [];
             // if (flattenedStatus.find(i => i.status === 'Open')) {
             // arr.push
             // }
             let tmpVal: FlatStatus;
             arr.push(
-              (tmpVal = flattenedStatus.find(i => i.status === "Open"))
+              (tmpVal = flattenedStatus.find(i => i.status === 'Open'))
                 ? tmpVal.duration
                 : 0
             );
             arr.push(
-              (tmpVal = flattenedStatus.find(i => i.status === "WIP"))
+              (tmpVal = flattenedStatus.find(i => i.status === 'WIP'))
                 ? tmpVal.duration
                 : 0
             );
             arr.push(
-              (tmpVal = flattenedStatus.find(i => i.status === "Blocked"))
+              (tmpVal = flattenedStatus.find(i => i.status === 'Blocked'))
                 ? tmpVal.duration
                 : 0
             );
             arr.push(
-              (tmpVal = flattenedStatus.find(i => i.status === "Code Review"))
+              (tmpVal = flattenedStatus.find(i => i.status === 'Code Review'))
                 ? tmpVal.duration
                 : 0
             );
             arr.push(
               (tmpVal = flattenedStatus.find(
-                i => i.status === "Ready to merge to DEV"
+                i => i.status === 'Ready to merge to DEV'
               ))
                 ? tmpVal.duration
                 : 0
             );
             arr.push(
-              (tmpVal = flattenedStatus.find(i => i.status === "Dev test"))
+              (tmpVal = flattenedStatus.find(i => i.status === 'Dev test'))
                 ? tmpVal.duration
                 : 0
             );
             arr.push(
-              (tmpVal = flattenedStatus.find(i => i.status === "On SIT env"))
+              (tmpVal = flattenedStatus.find(i => i.status === 'On SIT env'))
                 ? tmpVal.duration
                 : 0
             );
             arr.push(
-              (tmpVal = flattenedStatus.find(i => i.status === "Closed"))
+              (tmpVal = flattenedStatus.find(i => i.status === 'Closed'))
                 ? tmpVal.duration
                 : 0
             );
@@ -188,57 +208,38 @@ export class ChartAreaComponent implements OnInit {
       // d.forEach(element => {
       //   console.dir(element);
       // });
-      //console.log('d:');
-      //console.dir(d);
-      this.chartData = d;
-      //this.chartData.push(data[0]);
+      // console.log('d:');
+      // console.dir(d);
+      this.chartData = chartData;
+      // this.chartData.push(data[0]);
 
-      //console.log(this.chartData);
+      // console.log(this.chartData);
       this.calculateAverage();
     });
   }
 
-  public chartData: Array<any> = [];
-
-  public chartLabels: Array<any> = [
-    "Open",
-    "In Progress",
-    "Blocked",
-    "Code Review",
-    "Ready to merge to DEV",
-    "Dev Test",
-    "On SIT env",
-    "Closed"
-  ];
-
-  public chartOptions: any = {
-    responsive: true
-  };
-
-  public chartLegend: boolean = true;
-  public chartType: string = "bar";
-
   public calculateAverage() {
-    let average = {
-      label: "Average",
-      type: "line",
+    const average = {
+      label: 'Average',
+      type: 'line',
       data: Array<number>()
     };
-    let control: Array<number> = [];
+    const control: Array<number> = [];
 
-    for (let l in this.chartLabels) {
+    for (let l = 0; l < this.chartLabels.length; l++) {
       average.data[l] = 0;
       control[l] = 0;
     }
-    for (let d of this.chartData) {
-      for (var _i = 0; _i < d.data.length; _i++) {
+
+    for (const d of this.chartData) {
+      for (let _i = 0; _i < d.data.length; _i++) {
         if (d.data[_i] > 0) {
           control[_i]++;
           average.data[_i] += d.data[_i];
         }
       }
     }
-    for (let data in average.data) {
+    for (const data in average.data) {
       if (control[data] > 0) {
         average.data[data] = average.data[data] / control[data];
       }
@@ -258,11 +259,11 @@ export class ChartAreaComponent implements OnInit {
         const label = chart.data.labels[clickedElementIndex];
         // get value by index
         const value = chart.data.datasets[0].data[clickedElementIndex];
-        //console.log(clickedElementIndex, label, value, datasetLabel)
+        // console.log(clickedElementIndex, label, value, datasetLabel)
         if (datasetLabel) {
           window.open(
-            "https://jira.ryanair.com:8443/browse/" + datasetLabel,
-            "_blank"
+            'https://jira.ryanair.com:8443/browse/' + datasetLabel,
+            '_blank'
           );
         }
       }

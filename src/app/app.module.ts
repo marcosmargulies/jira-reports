@@ -8,7 +8,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { ChartAreaComponent } from './chart-area/chart-area.component';
 import { HttpModule } from '@angular/http';
-import { DataService } from 'src/app/data-service.service';
+import { DataService } from 'src/app/services/data-service.service';
 
 @NgModule({
   declarations: [
