@@ -1,8 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from '../services/data-service.service';
-import { CommonModule } from '@angular/common';
-import { count } from 'rxjs/internal/operators/count';
-import { query } from '@angular/core/src/render3';
 
 interface FlatStatus {
   status: string;
@@ -18,6 +15,7 @@ export class ChartAreaComponent implements OnInit {
   constructor(private dataService: DataService) { }
   query = '';
 
+  public chartDataTotal: Array<number> = [];
   public chartData: Array<any> = [];
 
   public chartLabels: Array<any> = [
@@ -39,7 +37,7 @@ export class ChartAreaComponent implements OnInit {
   public chartType = 'bar';
 
   ngOnInit() {
-    this.query = 'key=TP-2736';
+    this.query = 'key in (TP-4897, TP-2934)';
     // "project ="Rooms V2 (March)" and Sprint in (1967) and type in (Story, Task, Improvement, Bug)";
     // 'project = "Trip Planner" and "Scrum Team" = "Space Invaders" and Sprint in (openSprints())';
     this.createChart();
@@ -210,6 +208,9 @@ export class ChartAreaComponent implements OnInit {
       // });
       // console.log('d:');
       // console.dir(d);
+
+
+
       this.chartData = chartData;
       // this.chartData.push(data[0]);
 
@@ -222,6 +223,7 @@ export class ChartAreaComponent implements OnInit {
     const average = {
       label: 'Average',
       type: 'line',
+      visible: false,
       data: Array<number>()
     };
     const control: Array<number> = [];
@@ -239,11 +241,13 @@ export class ChartAreaComponent implements OnInit {
         }
       }
     }
-    for (const data in average.data) {
-      if (control[data] > 0) {
-        average.data[data] = average.data[data] / control[data];
+    for (const index in average.data) {
+      if (control[index] > 0) {
+        this.chartDataTotal[index] = average.data[index];
+        average.data[index] = average.data[index] / control[index];
       }
     }
+    console.log(this.chartDataTotal);
     this.chartData.push(average);
   }
 
@@ -278,5 +282,11 @@ export class ChartAreaComponent implements OnInit {
     this.chartData = new Array<any>();
     this.query = value;
     this.createChart();
+  }
+
+  CheckFieldsChange(values: any) {
+    console.log(values);
+    console.log(values.currentTarget);
+    console.log(values.currentTarget.checked);
   }
 }
