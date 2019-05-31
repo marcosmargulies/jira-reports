@@ -6,3 +6,8 @@ canvas {
   width: 90%;
   height: 90%;
 }
+
+.horizontal {
+  display: inline;
+  display:inline-block;
+}

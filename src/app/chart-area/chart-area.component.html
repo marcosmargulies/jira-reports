@@ -3,12 +3,12 @@
   <input #box (keyup.enter)="onEnter(box.value)" width="400px" />
   <p>{{ query }}</p>
 </div>
-<!--
-<div class="row" *ngFor="let label of chartLabels">
-  <input (change)="CheckFieldsChange($event)" value="{{label}}" type="checkbox" />
+
+<div class="row" *ngFor="let label of chartLabels" class="horizontal">
+  <input (change)="CheckFieldsChange($event)" value="{{label}}" type="checkbox" checked />
   {{label}}
 </div>
--->
+
 <div class="row" *ngIf="chartData.length == 0">
   <div class="col-md-6">
     No data
@@ -17,8 +17,9 @@
 <div class="row" *ngIf="chartData.length > 0">
   <div class="col-md-6">
     <div style="display: block;">
-      <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [options]="chartOptions" [legend]="chartLegend"
-        [chartType]="chartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+      <canvas baseChart [datasets]="chartDataFiltered" [labels]="chartLabelsFiltered" [options]="chartOptions"
+        [legend]="chartLegend" [chartType]="chartType" (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"></canvas>
     </div>
   </div>
   <div class="col-md-6" style="margin-bottom: 10px">

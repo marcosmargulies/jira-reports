@@ -15,18 +15,29 @@ export class ChartAreaComponent implements OnInit {
   constructor(private dataService: DataService) { }
   query = '';
 
+  public chartDataFiltered: Array<any> = [];
+
+  public chartLabelsFiltered: Array<string> = [];
+
   public chartDataTotal: Array<number> = [];
   public chartData: Array<any> = [];
 
-  public chartLabels: Array<any> = [
+  public chartLabels: Array<string> = [
     'Open',
     'In Progress',
     'Blocked',
     'Code Review',
+    'Merged',
+    'On Test Env',
     'Ready to merge to DEV',
     'Dev Test',
+    'Merging to Master',
+    'SIT ready',
     'On SIT env',
-    'Closed'
+    'OAT Ready',
+    'On OAT Env',
+    'PROD Ready',
+    'Closed',
   ];
 
   public chartOptions: any = {
@@ -178,6 +189,16 @@ export class ChartAreaComponent implements OnInit {
                 : 0
             );
             arr.push(
+              (tmpVal = flattenedStatus.find(i => i.status === 'Merged'))
+                ? tmpVal.duration
+                : 0
+            );
+            arr.push(
+              (tmpVal = flattenedStatus.find(i => i.status === 'On Test Env'))
+                ? tmpVal.duration
+                : 0
+            );
+            arr.push(
               (tmpVal = flattenedStatus.find(
                 i => i.status === 'Ready to merge to DEV'
               ))
@@ -190,7 +211,32 @@ export class ChartAreaComponent implements OnInit {
                 : 0
             );
             arr.push(
+              (tmpVal = flattenedStatus.find(i => i.status === 'Merging to Master'))
+                ? tmpVal.duration
+                : 0
+            );
+            arr.push(
+              (tmpVal = flattenedStatus.find(i => i.status === 'SIT Ready'))
+                ? tmpVal.duration
+                : 0
+            );
+            arr.push(
               (tmpVal = flattenedStatus.find(i => i.status === 'On SIT env'))
+                ? tmpVal.duration
+                : 0
+            );
+            arr.push(
+              (tmpVal = flattenedStatus.find(i => i.status === 'OAT Ready'))
+                ? tmpVal.duration
+                : 0
+            );
+            arr.push(
+              (tmpVal = flattenedStatus.find(i => i.status === 'On OAT Env'))
+                ? tmpVal.duration
+                : 0
+            );
+            arr.push(
+              (tmpVal = flattenedStatus.find(i => i.status === 'PROD Ready'))
                 ? tmpVal.duration
                 : 0
             );
@@ -212,6 +258,8 @@ export class ChartAreaComponent implements OnInit {
 
 
       this.chartData = chartData;
+      this.chartDataFiltered = this.chartData;
+      this.chartLabelsFiltered = this.chartLabels;
       // this.chartData.push(data[0]);
 
       // console.log(this.chartData);
@@ -233,7 +281,7 @@ export class ChartAreaComponent implements OnInit {
       control[l] = 0;
     }
 
-    for (const d of this.chartData) {
+    for (const d of this.chartDataFiltered) {
       for (let _i = 0; _i < d.data.length; _i++) {
         if (d.data[_i] > 0) {
           control[_i]++;
@@ -248,7 +296,7 @@ export class ChartAreaComponent implements OnInit {
       }
     }
     console.log(this.chartDataTotal);
-    this.chartData.push(average);
+    this.chartDataFiltered.push(average);
   }
 
   // events
@@ -279,14 +327,42 @@ export class ChartAreaComponent implements OnInit {
   }
 
   onEnter(value: string) {
-    this.chartData = new Array<any>();
+    this.chartDataFiltered = new Array<any>();
     this.query = value;
     this.createChart();
   }
 
   CheckFieldsChange(values: any) {
-    console.log(values);
-    console.log(values.currentTarget);
+    /* console.log(values.currentTarget.value);
     console.log(values.currentTarget.checked);
+    console.log(this.chartLabels.indexOf(values.currentTarget.value)); */
+    return;
+
+    if (values.currentTarget.checked) {
+
+      // const index = this.chartLabels.indexOf(values.currentTarget.value);
+      this.chartLabelsFiltered = this.chartLabels;
+      this.chartDataFiltered = this.chartData;
+
+    } else {
+
+      const index = this.chartLabels.indexOf(values.currentTarget.value);
+
+      this.chartDataFiltered = Array.from(this.chartData);
+      /*this.chartDataFiltered.forEach(element => {
+        console.log(element);
+        element.data = Array.from(element.data.filter((_, i) => index.indexOf(i) <= -1));
+      });
+*/
+      for (let i = 0; i < this.chartDataFiltered.length; i++) {
+        const element = this.chartDataFiltered[i];
+        if (i === index) {
+          console.log(element);
+        }
+      }
+
+      this.chartLabelsFiltered = this.chartLabels.filter(obj => obj !== values.currentTarget.value);
+      // this.chartDataFiltered = this.chartData.filter(obj => obj !== index);
+    }
   }
 }
