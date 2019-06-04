@@ -26,6 +26,7 @@ export class DataService {
   }
 
   private getIssues(jqlString: string): Observable<any> {
+    // return this.http.get('./assets/json/jiramock.json');
     return this.post(`${this.jiraUrl}search`, {
       jql: jqlString,
       maxResults: 100,

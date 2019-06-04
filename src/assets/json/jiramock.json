@@ -1,0 +1,1721 @@
+{
+    "expand": "schema,names",
+    "startAt": 0,
+    "maxResults": 100,
+    "total": 2,
+    "issues": [
+        {
+            "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+            "id": "1205464",
+            "self": "https://jira.ryanair.com:8443/rest/api/2/issue/1205464",
+            "key": "TP-4897",
+            "fields": {
+                "customfield_13100": null,
+                "customfield_13102": null,
+                "fixVersions": [],
+                "customfield_13101": null,
+                "customfield_11200": null,
+                "resolution": {
+                    "self": "https://jira.ryanair.com:8443/rest/api/2/resolution/10000",
+                    "id": "10000",
+                    "description": "",
+                    "name": "Done"
+                },
+                "customfield_11201": null,
+                "customfield_13103": null,
+                "customfield_11202": null,
+                "customfield_11711": null,
+                "customfield_12800": null,
+                "customfield_12007": null,
+                "customfield_11710": null,
+                "customfield_11713": null,
+                "customfield_11712": null,
+                "customfield_12801": null,
+                "customfield_10900": null,
+                "customfield_11715": null,
+                "customfield_11714": null,
+                "customfield_10902": null,
+                "customfield_11716": {
+                    "self": "https://jira.ryanair.com:8443/rest/api/2/customFieldOption/12000",
+                    "value": "Space Invaders",
+                    "id": "12000"
+                },
+                "lastViewed": "2019-05-17T14:30:41.555+0100",
+                "customfield_12000": null,
+                "customfield_12002": null,
+                "customfield_12001": null,
+                "priority": {
+                    "self": "https://jira.ryanair.com:8443/rest/api/2/priority/3",
+                    "iconUrl": "https://jira.ryanair.com:8443/images/icons/priorities/major.svg",
+                    "name": "Medium",
+                    "id": "3"
+                },
+                "customfield_12004": null,
+                "customfield_12003": null,
+                "customfield_12006": null,
+                "labels": [],
+                "customfield_12401": null,
+                "customfield_12005": null,
+                "customfield_11702": null,
+                "customfield_11704": null,
+                "timeestimate": null,
+                "aggregatetimeoriginalestimate": null,
+                "versions": [],
+                "customfield_11703": null,
+                "customfield_11706": null,
+                "customfield_11705": null,
+                "customfield_11708": null,
+                "customfield_11707": null,
+                "issuelinks": [],
+                "customfield_11709": null,
+                "assignee": {
+                    "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=okhrimenkoe",
+                    "name": "okhrimenkoe",
+                    "key": "okhrimenkoe",
+                    "emailAddress": "okhrimenkoe@ryanair.com",
+                    "avatarUrls": {
+                        "48x48": "https://jira.ryanair.com:8443/secure/useravatar?avatarId=11914",
+                        "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&avatarId=11914",
+                        "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&avatarId=11914",
+                        "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&avatarId=11914"
+                    },
+                    "displayName": "Okhrimenko, Evgeniy",
+                    "active": true,
+                    "timeZone": "Europe/Dublin"
+                },
+                "status": {
+                    "self": "https://jira.ryanair.com:8443/rest/api/2/status/6",
+                    "description": "All activities already done. CAB signed off, paperwork complete feature/change in active commercial use.",
+                    "iconUrl": "https://jira.ryanair.com:8443/images/icons/statuses/closed.png",
+                    "name": "Closed",
+                    "id": "6",
+                    "statusCategory": {
+                        "self": "https://jira.ryanair.com:8443/rest/api/2/statuscategory/3",
+                        "id": 3,
+                        "key": "done",
+                        "colorName": "green",
+                        "name": "Done"
+                    }
+                },
+                "components": [],
+                "customfield_13201": null,
+                "customfield_13200": null,
+                "customfield_11300": null,
+                "customfield_12503": null,
+                "customfield_12502": null,
+                "customfield_12900": null,
+                "aggregatetimeestimate": null,
+                "creator": {
+                    "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=marguliesm",
+                    "name": "marguliesm",
+                    "key": "marguliesm",
+                    "emailAddress": "marguliesm@ryanair.com",
+                    "avatarUrls": {
+                        "48x48": "https://jira.ryanair.com:8443/secure/useravatar?ownerId=marguliesm&avatarId=14501",
+                        "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&ownerId=marguliesm&avatarId=14501",
+                        "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&ownerId=marguliesm&avatarId=14501",
+                        "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&ownerId=marguliesm&avatarId=14501"
+                    },
+                    "displayName": "Margulies, Marcos",
+                    "active": true,
+                    "timeZone": "Europe/Warsaw"
+                },
+                "subtasks": [],
+                "reporter": {
+                    "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=marguliesm",
+                    "name": "marguliesm",
+                    "key": "marguliesm",
+                    "emailAddress": "marguliesm@ryanair.com",
+                    "avatarUrls": {
+                        "48x48": "https://jira.ryanair.com:8443/secure/useravatar?ownerId=marguliesm&avatarId=14501",
+                        "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&ownerId=marguliesm&avatarId=14501",
+                        "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&ownerId=marguliesm&avatarId=14501",
+                        "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&ownerId=marguliesm&avatarId=14501"
+                    },
+                    "displayName": "Margulies, Marcos",
+                    "active": true,
+                    "timeZone": "Europe/Warsaw"
+                },
+                "customfield_12101": {
+                    "self": "https://jira.ryanair.com:8443/rest/api/2/customFieldOption/12104",
+                    "value": "New",
+                    "id": "12104"
+                },
+                "customfield_12100": null,
+                "aggregateprogress": {
+                    "progress": 0,
+                    "total": 0
+                },
+                "customfield_12103": null,
+                "customfield_12102": null,
+                "customfield_12501": null,
+                "customfield_12500": null,
+                "customfield_11803": null,
+                "customfield_11802": null,
+                "customfield_11804": null,
+                "progress": {
+                    "progress": 0,
+                    "total": 0
+                },
+                "votes": {
+                    "self": "https://jira.ryanair.com:8443/rest/api/2/issue/TP-4897/votes",
+                    "votes": 0,
+                    "hasVoted": false
+                },
+                "issuetype": {
+                    "self": "https://jira.ryanair.com:8443/rest/api/2/issuetype/3",
+                    "id": "3",
+                    "description": "A task that needs to be done.",
+                    "iconUrl": "https://jira.ryanair.com:8443/secure/viewavatar?size=xsmall&avatarId=10918&avatarType=issuetype",
+                    "name": "Task",
+                    "subtask": false,
+                    "avatarId": 10918
+                },
+                "timespent": null,
+                "project": {
+                    "self": "https://jira.ryanair.com:8443/rest/api/2/project/12304",
+                    "id": "12304",
+                    "key": "TP",
+                    "name": "Trip Planner",
+                    "avatarUrls": {
+                        "48x48": "https://jira.ryanair.com:8443/secure/projectavatar?avatarId=11903",
+                        "24x24": "https://jira.ryanair.com:8443/secure/projectavatar?size=small&avatarId=11903",
+                        "16x16": "https://jira.ryanair.com:8443/secure/projectavatar?size=xsmall&avatarId=11903",
+                        "32x32": "https://jira.ryanair.com:8443/secure/projectavatar?size=medium&avatarId=11903"
+                    }
+                },
+                "customfield_13300": null,
+                "aggregatetimespent": null,
+                "customfield_13301": null,
+                "customfield_11400": "2|zx0cmg:",
+                "customfield_12602": null,
+                "customfield_10700": null,
+                "customfield_12604": null,
+                "customfield_10701": null,
+                "customfield_12603": null,
+                "customfield_10702": null,
+                "customfield_12606": null,
+                "customfield_10703": null,
+                "customfield_12605": null,
+                "customfield_10704": null,
+                "resolutiondate": "2019-04-10T08:39:25.000+0100",
+                "customfield_10705": null,
+                "workratio": -1,
+                "watches": {
+                    "self": "https://jira.ryanair.com:8443/rest/api/2/issue/TP-4897/watchers",
+                    "watchCount": 1,
+                    "isWatching": true
+                },
+                "created": "2019-04-01T10:07:57.000+0100",
+                "customfield_12200": null,
+                "customfield_12201": null,
+                "customfield_11902": null,
+                "customfield_11901": [
+                    {
+                        "self": "https://jira.ryanair.com:8443/rest/api/2/customFieldOption/11910",
+                        "value": "No",
+                        "id": "11910"
+                    }
+                ],
+                "customfield_11903": null,
+                "updated": "2019-04-10T12:12:29.000+0100",
+                "timeoriginalestimate": null,
+                "description": null,
+                "customfield_13000": null,
+                "customfield_10010": null,
+                "customfield_11100": null,
+                "customfield_13400": null,
+                "customfield_10005": [
+                    "com.atlassian.greenhopper.service.sprint.Sprint@af4da99[id=1980,rapidViewId=513,state=CLOSED,name=Space Invaders - Sprint 11,startDate=2019-04-01T10:26:19.105+01:00,endDate=2019-04-15T10:26:00.000+01:00,completeDate=2019-04-15T07:41:55.604+01:00,sequence=1980,goal=]"
+                ],
+                "customfield_12701": null,
+                "customfield_10006": "TP-2298",
+                "customfield_12700": null,
+                "customfield_12703": {
+                    "self": "https://jira.ryanair.com:8443/rest/api/2/customFieldOption/12804",
+                    "value": "Medium",
+                    "id": "12804"
+                },
+                "customfield_12702": {
+                    "self": "https://jira.ryanair.com:8443/rest/api/2/customFieldOption/12802",
+                    "value": "Green",
+                    "id": "12802"
+                },
+                "customfield_10801": null,
+                "customfield_10802": null,
+                "customfield_12704": null,
+                "summary": "Prepare model for Special Equipment ",
+                "customfield_10000": null,
+                "customfield_10001": null,
+                "customfield_12301": null,
+                "customfield_10002": null,
+                "customfield_12300": "{summaryBean=com.atlassian.jira.plugin.devstatus.rest.SummaryBean@c6522f0[summary={pullrequest=com.atlassian.jira.plugin.devstatus.rest.SummaryItemBean@31ced7d6[overall=com.atlassian.jira.plugin.devstatus.summary.beans.PullRequestOverallBean@e392a45[stateCount=0,state=OPEN,count=0,lastUpdated=<null>,lastUpdatedTimestamp=<null>],byInstanceType={}], build=com.atlassian.jira.plugin.devstatus.rest.SummaryItemBean@6ff0dfbf[overall=com.atlassian.jira.plugin.devstatus.summary.beans.BuildOverallBean@4a271213[failedBuildCount=0,successfulBuildCount=0,unknownBuildCount=0,count=0,lastUpdated=<null>,lastUpdatedTimestamp=<null>],byInstanceType={}], review=com.atlassian.jira.plugin.devstatus.rest.SummaryItemBean@d900ce6[overall=com.atlassian.jira.plugin.devstatus.summary.beans.ReviewsOverallBean@4abc7413[stateCount=0,state=<null>,dueDate=<null>,overDue=false,count=0,lastUpdated=<null>,lastUpdatedTimestamp=<null>],byInstanceType={}], deployment-environment=com.atlassian.jira.plugin.devstatus.rest.SummaryItemBean@23d847dc[overall=com.atlassian.jira.plugin.devstatus.summary.beans.DeploymentOverallBean@511d6e3e[topEnvironments=[],showProjects=false,successfulCount=0,count=0,lastUpdated=<null>,lastUpdatedTimestamp=<null>],byInstanceType={}], repository=com.atlassian.jira.plugin.devstatus.rest.SummaryItemBean@5ce7bfc7[overall=com.atlassian.jira.plugin.devstatus.summary.beans.CommitOverallBean@75d254a4[count=0,lastUpdated=<null>,lastUpdatedTimestamp=<null>],byInstanceType={}], branch=com.atlassian.jira.plugin.devstatus.rest.SummaryItemBean@14550b65[overall=com.atlassian.jira.plugin.devstatus.summary.beans.BranchOverallBean@2e03eb4f[count=0,lastUpdated=<null>,lastUpdatedTimestamp=<null>],byInstanceType={}]},errors=[],configErrors=[]], devSummaryJson={\"cachedValue\":{\"errors\":[],\"configErrors\":[],\"summary\":{\"pullrequest\":{\"overall\":{\"count\":0,\"lastUpdated\":null,\"stateCount\":0,\"state\":\"OPEN\",\"open\":true},\"byInstanceType\":{}},\"build\":{\"overall\":{\"count\":0,\"lastUpdated\":null,\"failedBuildCount\":0,\"successfulBuildCount\":0,\"unknownBuildCount\":0},\"byInstanceType\":{}},\"review\":{\"overall\":{\"count\":0,\"lastUpdated\":null,\"stateCount\":0,\"state\":null,\"dueDate\":null,\"overDue\":false,\"completed\":false},\"byInstanceType\":{}},\"deployment-environment\":{\"overall\":{\"count\":0,\"lastUpdated\":null,\"topEnvironments\":[],\"showProjects\":false,\"successfulCount\":0},\"byInstanceType\":{}},\"repository\":{\"overall\":{\"count\":0,\"lastUpdated\":null},\"byInstanceType\":{}},\"branch\":{\"overall\":{\"count\":0,\"lastUpdated\":null},\"byInstanceType\":{}}}},\"isStale\":false}}",
+                "customfield_10004": "9223372036854775807",
+                "customfield_11601": null,
+                "customfield_11600": null,
+                "environment": null,
+                "customfield_11602": null,
+                "customfield_11604": null,
+                "duedate": null
+            },
+            "changelog": {
+                "startAt": 0,
+                "maxResults": 7,
+                "total": 7,
+                "histories": [
+                    {
+                        "id": "2307501",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=marguliesm",
+                            "name": "marguliesm",
+                            "key": "marguliesm",
+                            "emailAddress": "marguliesm@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?ownerId=marguliesm&avatarId=14501",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&ownerId=marguliesm&avatarId=14501",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&ownerId=marguliesm&avatarId=14501",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&ownerId=marguliesm&avatarId=14501"
+                            },
+                            "displayName": "Margulies, Marcos",
+                            "active": true,
+                            "timeZone": "Europe/Warsaw"
+                        },
+                        "created": "2019-04-01T10:18:52.000+0100",
+                        "items": [
+                            {
+                                "field": "assignee",
+                                "fieldtype": "jira",
+                                "from": "bochenekr",
+                                "fromString": "Bochenek, Renata",
+                                "to": "marguliesm",
+                                "toString": "Margulies, Marcos"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2325537",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=costat",
+                            "name": "costat",
+                            "key": "costat",
+                            "emailAddress": "costat@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?avatarId=10122",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&avatarId=10122",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&avatarId=10122",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&avatarId=10122"
+                            },
+                            "displayName": "Costa, Tiago",
+                            "active": true,
+                            "timeZone": "Europe/Dublin"
+                        },
+                        "created": "2019-04-10T08:39:00.000+0100",
+                        "items": [
+                            {
+                                "field": "assignee",
+                                "fieldtype": "jira",
+                                "from": "marguliesm",
+                                "fromString": "Margulies, Marcos",
+                                "to": "okhrimenkoe",
+                                "toString": "Okhrimenko, Evgeniy"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2325538",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=costat",
+                            "name": "costat",
+                            "key": "costat",
+                            "emailAddress": "costat@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?avatarId=10122",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&avatarId=10122",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&avatarId=10122",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&avatarId=10122"
+                            },
+                            "displayName": "Costa, Tiago",
+                            "active": true,
+                            "timeZone": "Europe/Dublin"
+                        },
+                        "created": "2019-04-10T08:39:06.000+0100",
+                        "items": [
+                            {
+                                "field": "status",
+                                "fieldtype": "jira",
+                                "from": "1",
+                                "fromString": "Open",
+                                "to": "3",
+                                "toString": "In Progress"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2325539",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=costat",
+                            "name": "costat",
+                            "key": "costat",
+                            "emailAddress": "costat@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?avatarId=10122",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&avatarId=10122",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&avatarId=10122",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&avatarId=10122"
+                            },
+                            "displayName": "Costa, Tiago",
+                            "active": true,
+                            "timeZone": "Europe/Dublin"
+                        },
+                        "created": "2019-04-10T08:39:11.000+0100",
+                        "items": [
+                            {
+                                "field": "status",
+                                "fieldtype": "jira",
+                                "from": "3",
+                                "fromString": "In Progress",
+                                "to": "10810",
+                                "toString": "Code Review"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2325541",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=costat",
+                            "name": "costat",
+                            "key": "costat",
+                            "emailAddress": "costat@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?avatarId=10122",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&avatarId=10122",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&avatarId=10122",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&avatarId=10122"
+                            },
+                            "displayName": "Costa, Tiago",
+                            "active": true,
+                            "timeZone": "Europe/Dublin"
+                        },
+                        "created": "2019-04-10T08:39:18.000+0100",
+                        "items": [
+                            {
+                                "field": "status",
+                                "fieldtype": "jira",
+                                "from": "10810",
+                                "fromString": "Code Review",
+                                "to": "11607",
+                                "toString": "In Test in TST"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2325542",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=costat",
+                            "name": "costat",
+                            "key": "costat",
+                            "emailAddress": "costat@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?avatarId=10122",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&avatarId=10122",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&avatarId=10122",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&avatarId=10122"
+                            },
+                            "displayName": "Costa, Tiago",
+                            "active": true,
+                            "timeZone": "Europe/Dublin"
+                        },
+                        "created": "2019-04-10T08:39:25.000+0100",
+                        "items": [
+                            {
+                                "field": "status",
+                                "fieldtype": "jira",
+                                "from": "11607",
+                                "fromString": "In Test in TST",
+                                "to": "6",
+                                "toString": "Closed"
+                            },
+                            {
+                                "field": "resolution",
+                                "fieldtype": "jira",
+                                "from": null,
+                                "fromString": null,
+                                "to": "10000",
+                                "toString": "Done"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2326746",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=okhrimenkoe",
+                            "name": "okhrimenkoe",
+                            "key": "okhrimenkoe",
+                            "emailAddress": "okhrimenkoe@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?avatarId=11914",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&avatarId=11914",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&avatarId=11914",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&avatarId=11914"
+                            },
+                            "displayName": "Okhrimenko, Evgeniy",
+                            "active": true,
+                            "timeZone": "Europe/Dublin"
+                        },
+                        "created": "2019-04-10T12:12:29.000+0100",
+                        "items": [
+                            {
+                                "field": "Epic Link",
+                                "fieldtype": "custom",
+                                "from": null,
+                                "fromString": null,
+                                "to": "1185920",
+                                "toString": "TP-2298"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+            "id": "1191554",
+            "self": "https://jira.ryanair.com:8443/rest/api/2/issue/1191554",
+            "key": "TP-2934",
+            "fields": {
+                "customfield_13100": null,
+                "customfield_13102": null,
+                "fixVersions": [
+                    {
+                        "self": "https://jira.ryanair.com:8443/rest/api/2/version/17753",
+                        "id": "17753",
+                        "description": "",
+                        "name": "mFES_v1.2.0",
+                        "archived": false,
+                        "released": true,
+                        "releaseDate": "2019-05-16"
+                    }
+                ],
+                "customfield_13101": null,
+                "customfield_11200": null,
+                "resolution": {
+                    "self": "https://jira.ryanair.com:8443/rest/api/2/resolution/10000",
+                    "id": "10000",
+                    "description": "",
+                    "name": "Done"
+                },
+                "customfield_11201": null,
+                "customfield_13103": null,
+                "customfield_11202": null,
+                "customfield_11711": null,
+                "customfield_12800": null,
+                "customfield_12007": null,
+                "customfield_11710": null,
+                "customfield_11713": null,
+                "customfield_11712": null,
+                "customfield_12801": null,
+                "customfield_10900": null,
+                "customfield_11715": null,
+                "customfield_11714": null,
+                "customfield_10902": null,
+                "customfield_11716": {
+                    "self": "https://jira.ryanair.com:8443/rest/api/2/customFieldOption/12000",
+                    "value": "Space Invaders",
+                    "id": "12000"
+                },
+                "lastViewed": null,
+                "customfield_12000": null,
+                "customfield_12002": null,
+                "customfield_12001": null,
+                "priority": {
+                    "self": "https://jira.ryanair.com:8443/rest/api/2/priority/3",
+                    "iconUrl": "https://jira.ryanair.com:8443/images/icons/priorities/major.svg",
+                    "name": "Medium",
+                    "id": "3"
+                },
+                "customfield_12004": null,
+                "customfield_12003": null,
+                "customfield_12006": null,
+                "labels": [],
+                "customfield_12401": null,
+                "customfield_12005": null,
+                "customfield_11702": null,
+                "customfield_11704": null,
+                "timeestimate": null,
+                "aggregatetimeoriginalestimate": null,
+                "versions": [],
+                "customfield_11703": null,
+                "customfield_11706": null,
+                "customfield_11705": null,
+                "customfield_11708": null,
+                "customfield_11707": null,
+                "issuelinks": [
+                    {
+                        "id": "195894",
+                        "self": "https://jira.ryanair.com:8443/rest/api/2/issueLink/195894",
+                        "type": {
+                            "id": "10200",
+                            "name": "Associated bugs and stories",
+                            "inward": "associated with",
+                            "outward": "associated with",
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/issueLinkType/10200"
+                        },
+                        "outwardIssue": {
+                            "id": "1210013",
+                            "key": "TP-5326",
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/issue/1210013",
+                            "fields": {
+                                "summary": "Music equipment card should be displayed on the third place on Equipment tab",
+                                "status": {
+                                    "self": "https://jira.ryanair.com:8443/rest/api/2/status/6",
+                                    "description": "All activities already done. CAB signed off, paperwork complete feature/change in active commercial use.",
+                                    "iconUrl": "https://jira.ryanair.com:8443/images/icons/statuses/closed.png",
+                                    "name": "Closed",
+                                    "id": "6",
+                                    "statusCategory": {
+                                        "self": "https://jira.ryanair.com:8443/rest/api/2/statuscategory/3",
+                                        "id": 3,
+                                        "key": "done",
+                                        "colorName": "green",
+                                        "name": "Done"
+                                    }
+                                },
+                                "priority": {
+                                    "self": "https://jira.ryanair.com:8443/rest/api/2/priority/3",
+                                    "iconUrl": "https://jira.ryanair.com:8443/images/icons/priorities/major.svg",
+                                    "name": "Medium",
+                                    "id": "3"
+                                },
+                                "issuetype": {
+                                    "self": "https://jira.ryanair.com:8443/rest/api/2/issuetype/1",
+                                    "id": "1",
+                                    "description": "A problem which impairs or prevents the functions of the product.",
+                                    "iconUrl": "https://jira.ryanair.com:8443/secure/viewavatar?size=xsmall&avatarId=10903&avatarType=issuetype",
+                                    "name": "Bug",
+                                    "subtask": false,
+                                    "avatarId": 10903
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "id": "179886",
+                        "self": "https://jira.ryanair.com:8443/rest/api/2/issueLink/179886",
+                        "type": {
+                            "id": "10001",
+                            "name": "Cloners",
+                            "inward": "is cloned by",
+                            "outward": "clones",
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/issueLinkType/10001"
+                        },
+                        "outwardIssue": {
+                            "id": "1191548",
+                            "key": "TP-2930",
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/issue/1191548",
+                            "fields": {
+                                "summary": "Flight Extras: Special Eq. | Tab | Baby Eq. Card",
+                                "status": {
+                                    "self": "https://jira.ryanair.com:8443/rest/api/2/status/6",
+                                    "description": "All activities already done. CAB signed off, paperwork complete feature/change in active commercial use.",
+                                    "iconUrl": "https://jira.ryanair.com:8443/images/icons/statuses/closed.png",
+                                    "name": "Closed",
+                                    "id": "6",
+                                    "statusCategory": {
+                                        "self": "https://jira.ryanair.com:8443/rest/api/2/statuscategory/3",
+                                        "id": 3,
+                                        "key": "done",
+                                        "colorName": "green",
+                                        "name": "Done"
+                                    }
+                                },
+                                "priority": {
+                                    "self": "https://jira.ryanair.com:8443/rest/api/2/priority/3",
+                                    "iconUrl": "https://jira.ryanair.com:8443/images/icons/priorities/major.svg",
+                                    "name": "Medium",
+                                    "id": "3"
+                                },
+                                "issuetype": {
+                                    "self": "https://jira.ryanair.com:8443/rest/api/2/issuetype/7",
+                                    "id": "7",
+                                    "description": "Created by JIRA Software - do not edit or delete. Issue type for a user story.",
+                                    "iconUrl": "https://jira.ryanair.com:8443/secure/viewavatar?size=xsmall&avatarId=10915&avatarType=issuetype",
+                                    "name": "Story",
+                                    "subtask": false,
+                                    "avatarId": 10915
+                                }
+                            }
+                        }
+                    }
+                ],
+                "customfield_11709": null,
+                "assignee": {
+                    "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=cacerespradoa",
+                    "name": "cacerespradoa",
+                    "key": "cacerespradoa",
+                    "emailAddress": "cacerespradoa@ryanair.com",
+                    "avatarUrls": {
+                        "48x48": "https://jira.ryanair.com:8443/secure/useravatar?ownerId=cacerespradoa&avatarId=16003",
+                        "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&ownerId=cacerespradoa&avatarId=16003",
+                        "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&ownerId=cacerespradoa&avatarId=16003",
+                        "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&ownerId=cacerespradoa&avatarId=16003"
+                    },
+                    "displayName": "Caceres Prado, Alejandro",
+                    "active": true,
+                    "timeZone": "Europe/Dublin"
+                },
+                "status": {
+                    "self": "https://jira.ryanair.com:8443/rest/api/2/status/6",
+                    "description": "All activities already done. CAB signed off, paperwork complete feature/change in active commercial use.",
+                    "iconUrl": "https://jira.ryanair.com:8443/images/icons/statuses/closed.png",
+                    "name": "Closed",
+                    "id": "6",
+                    "statusCategory": {
+                        "self": "https://jira.ryanair.com:8443/rest/api/2/statuscategory/3",
+                        "id": 3,
+                        "key": "done",
+                        "colorName": "green",
+                        "name": "Done"
+                    }
+                },
+                "components": [],
+                "customfield_13201": null,
+                "customfield_13200": null,
+                "customfield_11300": null,
+                "customfield_12503": null,
+                "customfield_12502": null,
+                "customfield_12900": null,
+                "aggregatetimeestimate": null,
+                "creator": {
+                    "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=medinas",
+                    "name": "medinas",
+                    "key": "medinas",
+                    "emailAddress": "medinas@ryanair.com",
+                    "avatarUrls": {
+                        "48x48": "https://jira.ryanair.com:8443/secure/useravatar?avatarId=10122",
+                        "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&avatarId=10122",
+                        "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&avatarId=10122",
+                        "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&avatarId=10122"
+                    },
+                    "displayName": "Medina de Miguel, Sergio",
+                    "active": true,
+                    "timeZone": "Europe/Dublin"
+                },
+                "subtasks": [],
+                "reporter": {
+                    "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=medinas",
+                    "name": "medinas",
+                    "key": "medinas",
+                    "emailAddress": "medinas@ryanair.com",
+                    "avatarUrls": {
+                        "48x48": "https://jira.ryanair.com:8443/secure/useravatar?avatarId=10122",
+                        "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&avatarId=10122",
+                        "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&avatarId=10122",
+                        "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&avatarId=10122"
+                    },
+                    "displayName": "Medina de Miguel, Sergio",
+                    "active": true,
+                    "timeZone": "Europe/Dublin"
+                },
+                "customfield_12101": {
+                    "self": "https://jira.ryanair.com:8443/rest/api/2/customFieldOption/12107",
+                    "value": "Ready for Planning",
+                    "id": "12107"
+                },
+                "customfield_12100": null,
+                "aggregateprogress": {
+                    "progress": 0,
+                    "total": 0
+                },
+                "customfield_12103": null,
+                "customfield_12102": null,
+                "customfield_12501": null,
+                "customfield_12500": null,
+                "customfield_11803": null,
+                "customfield_11802": null,
+                "customfield_11804": null,
+                "progress": {
+                    "progress": 0,
+                    "total": 0
+                },
+                "votes": {
+                    "self": "https://jira.ryanair.com:8443/rest/api/2/issue/TP-2934/votes",
+                    "votes": 0,
+                    "hasVoted": false
+                },
+                "issuetype": {
+                    "self": "https://jira.ryanair.com:8443/rest/api/2/issuetype/7",
+                    "id": "7",
+                    "description": "Created by JIRA Software - do not edit or delete. Issue type for a user story.",
+                    "iconUrl": "https://jira.ryanair.com:8443/secure/viewavatar?size=xsmall&avatarId=10915&avatarType=issuetype",
+                    "name": "Story",
+                    "subtask": false,
+                    "avatarId": 10915
+                },
+                "timespent": null,
+                "project": {
+                    "self": "https://jira.ryanair.com:8443/rest/api/2/project/12304",
+                    "id": "12304",
+                    "key": "TP",
+                    "name": "Trip Planner",
+                    "avatarUrls": {
+                        "48x48": "https://jira.ryanair.com:8443/secure/projectavatar?avatarId=11903",
+                        "24x24": "https://jira.ryanair.com:8443/secure/projectavatar?size=small&avatarId=11903",
+                        "16x16": "https://jira.ryanair.com:8443/secure/projectavatar?size=xsmall&avatarId=11903",
+                        "32x32": "https://jira.ryanair.com:8443/secure/projectavatar?size=medium&avatarId=11903"
+                    }
+                },
+                "customfield_13300": null,
+                "aggregatetimespent": null,
+                "customfield_13301": null,
+                "customfield_11400": "2|u00lqj:igvxi",
+                "customfield_12602": null,
+                "customfield_10700": null,
+                "customfield_12604": null,
+                "customfield_10701": null,
+                "customfield_12603": null,
+                "customfield_10702": null,
+                "customfield_12606": null,
+                "customfield_10703": null,
+                "customfield_12605": null,
+                "customfield_10704": null,
+                "resolutiondate": "2019-04-18T12:51:28.000+0100",
+                "customfield_10705": null,
+                "workratio": -1,
+                "watches": {
+                    "self": "https://jira.ryanair.com:8443/rest/api/2/issue/TP-2934/watchers",
+                    "watchCount": 1,
+                    "isWatching": false
+                },
+                "created": "2019-01-10T15:42:17.000+0000",
+                "customfield_12200": null,
+                "customfield_12201": null,
+                "customfield_11902": null,
+                "customfield_11901": [
+                    {
+                        "self": "https://jira.ryanair.com:8443/rest/api/2/customFieldOption/11910",
+                        "value": "No",
+                        "id": "11910"
+                    }
+                ],
+                "customfield_11903": null,
+                "updated": "2019-04-18T12:51:28.000+0100",
+                "timeoriginalestimate": null,
+                "description": "h3. *1. Narrative*\r\n\r\n*As a* user interested in purchase Special Equipment \r\n *I want* see option available for Music Equipment\r\n *So that* I can go into that category to purchase it\r\n\r\n+Purpose of story+\r\nSet the Music card and its behavior\r\n\r\nh3. *2. Visuals*\r\nhttps://app.zeplin.io/project/5be2a2994368b93d10a1f082/screen/5c5d4eae7ade0d2cb4c78360\r\n\r\nh3. *3. Business rules*\r\nAmount limits per PAX and per flight is compiled in\r\nhttps://confluence.ryanair.com:8444/display/RYR3/3.+Special+Equipment\r\n\r\nh3. *4. Acceptance criteria*\r\n\r\n*CARD*\r\n(*) Music Card will look as per visuals. \r\n(*) When tapping the card it will expand and *(if applies)* a previously expanded type of Equipment card will be collapsed\r\n(*) Music Card will show the price indicating Each way, as per visuals\r\n\r\n*EXPANDED CARD*\r\n(*) Will show the info placeholder as per visuals. \r\n* Tapping it will expand it so as all the text will be shown, chevron will point upwards. And vice versa \r\n\r\n(*) Will show the legs and PAX involved (requirement in TP-2912) \r\n(*) Business rules above will apply to set the availability / maximum amount permitted per PAX / flight\r\n* Max amount per PAX will look as per visuals in zeplin link\r\n* No available status for a leg will use the block defined in TP-2928\r\n",
+                "customfield_13000": null,
+                "customfield_10010": null,
+                "customfield_11100": null,
+                "customfield_13400": null,
+                "customfield_10005": [
+                    "com.atlassian.greenhopper.service.sprint.Sprint@af4da99[id=1980,rapidViewId=513,state=CLOSED,name=Space Invaders - Sprint 11,startDate=2019-04-01T10:26:19.105+01:00,endDate=2019-04-15T10:26:00.000+01:00,completeDate=2019-04-15T07:41:55.604+01:00,sequence=1980,goal=]",
+                    "com.atlassian.greenhopper.service.sprint.Sprint@37db4e88[id=2002,rapidViewId=513,state=CLOSED,name=Space Invaders - Sprint 12,startDate=2019-04-15T10:07:25.874+01:00,endDate=2019-04-29T10:07:00.000+01:00,completeDate=2019-04-29T09:27:21.280+01:00,sequence=2002,goal=]"
+                ],
+                "customfield_12701": null,
+                "customfield_10006": "TP-2298",
+                "customfield_12700": null,
+                "customfield_12703": {
+                    "self": "https://jira.ryanair.com:8443/rest/api/2/customFieldOption/12804",
+                    "value": "Medium",
+                    "id": "12804"
+                },
+                "customfield_12702": {
+                    "self": "https://jira.ryanair.com:8443/rest/api/2/customFieldOption/12802",
+                    "value": "Green",
+                    "id": "12802"
+                },
+                "customfield_10801": null,
+                "customfield_10802": null,
+                "customfield_12704": null,
+                "summary": "Flight Extras: Special Eq. | Tab | Music Eq. Card",
+                "customfield_10000": null,
+                "customfield_10001": null,
+                "customfield_12301": null,
+                "customfield_10002": 3.0,
+                "customfield_12300": "{summaryBean=com.atlassian.jira.plugin.devstatus.rest.SummaryBean@72f21515[summary={pullrequest=com.atlassian.jira.plugin.devstatus.rest.SummaryItemBean@39558d1b[overall=com.atlassian.jira.plugin.devstatus.summary.beans.PullRequestOverallBean@12d3e046[stateCount=0,state=OPEN,count=0,lastUpdated=<null>,lastUpdatedTimestamp=<null>],byInstanceType={}], build=com.atlassian.jira.plugin.devstatus.rest.SummaryItemBean@5165eb17[overall=com.atlassian.jira.plugin.devstatus.summary.beans.BuildOverallBean@33dd1693[failedBuildCount=0,successfulBuildCount=0,unknownBuildCount=0,count=0,lastUpdated=<null>,lastUpdatedTimestamp=<null>],byInstanceType={}], review=com.atlassian.jira.plugin.devstatus.rest.SummaryItemBean@267578a6[overall=com.atlassian.jira.plugin.devstatus.summary.beans.ReviewsOverallBean@2ba96dfe[stateCount=0,state=<null>,dueDate=<null>,overDue=false,count=0,lastUpdated=<null>,lastUpdatedTimestamp=<null>],byInstanceType={}], deployment-environment=com.atlassian.jira.plugin.devstatus.rest.SummaryItemBean@556a16cf[overall=com.atlassian.jira.plugin.devstatus.summary.beans.DeploymentOverallBean@ed8fb7f[topEnvironments=[],showProjects=false,successfulCount=0,count=0,lastUpdated=<null>,lastUpdatedTimestamp=<null>],byInstanceType={}], repository=com.atlassian.jira.plugin.devstatus.rest.SummaryItemBean@365124a[overall=com.atlassian.jira.plugin.devstatus.summary.beans.CommitOverallBean@63435945[count=0,lastUpdated=<null>,lastUpdatedTimestamp=<null>],byInstanceType={}], branch=com.atlassian.jira.plugin.devstatus.rest.SummaryItemBean@669ae78c[overall=com.atlassian.jira.plugin.devstatus.summary.beans.BranchOverallBean@2fd0eb23[count=0,lastUpdated=<null>,lastUpdatedTimestamp=<null>],byInstanceType={}]},errors=[],configErrors=[]], devSummaryJson={\"cachedValue\":{\"errors\":[],\"configErrors\":[],\"summary\":{\"pullrequest\":{\"overall\":{\"count\":0,\"lastUpdated\":null,\"stateCount\":0,\"state\":\"OPEN\",\"open\":true},\"byInstanceType\":{}},\"build\":{\"overall\":{\"count\":0,\"lastUpdated\":null,\"failedBuildCount\":0,\"successfulBuildCount\":0,\"unknownBuildCount\":0},\"byInstanceType\":{}},\"review\":{\"overall\":{\"count\":0,\"lastUpdated\":null,\"stateCount\":0,\"state\":null,\"dueDate\":null,\"overDue\":false,\"completed\":false},\"byInstanceType\":{}},\"deployment-environment\":{\"overall\":{\"count\":0,\"lastUpdated\":null,\"topEnvironments\":[],\"showProjects\":false,\"successfulCount\":0},\"byInstanceType\":{}},\"repository\":{\"overall\":{\"count\":0,\"lastUpdated\":null},\"byInstanceType\":{}},\"branch\":{\"overall\":{\"count\":0,\"lastUpdated\":null},\"byInstanceType\":{}}}},\"isStale\":false}}",
+                "customfield_10003": null,
+                "customfield_10004": "9223372036854775807",
+                "customfield_11601": null,
+                "customfield_11600": null,
+                "environment": null,
+                "customfield_11602": null,
+                "customfield_11604": null,
+                "duedate": null
+            },
+            "changelog": {
+                "startAt": 0,
+                "maxResults": 25,
+                "total": 25,
+                "histories": [
+                    {
+                        "id": "2156147",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=medinas",
+                            "name": "medinas",
+                            "key": "medinas",
+                            "emailAddress": "medinas@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?avatarId=10122",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&avatarId=10122",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&avatarId=10122",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&avatarId=10122"
+                            },
+                            "displayName": "Medina de Miguel, Sergio",
+                            "active": true,
+                            "timeZone": "Europe/Dublin"
+                        },
+                        "created": "2019-01-10T15:42:17.000+0000",
+                        "items": [
+                            {
+                                "field": "Epic Link",
+                                "fieldtype": "custom",
+                                "from": null,
+                                "fromString": null,
+                                "to": "1185920",
+                                "toString": "TP-2298"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2156149",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=medinas",
+                            "name": "medinas",
+                            "key": "medinas",
+                            "emailAddress": "medinas@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?avatarId=10122",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&avatarId=10122",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&avatarId=10122",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&avatarId=10122"
+                            },
+                            "displayName": "Medina de Miguel, Sergio",
+                            "active": true,
+                            "timeZone": "Europe/Dublin"
+                        },
+                        "created": "2019-01-10T15:42:17.000+0000",
+                        "items": [
+                            {
+                                "field": "Link",
+                                "fieldtype": "jira",
+                                "from": null,
+                                "fromString": null,
+                                "to": "TP-2930",
+                                "toString": "This issue clones TP-2930"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2221125",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=medinas",
+                            "name": "medinas",
+                            "key": "medinas",
+                            "emailAddress": "medinas@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?avatarId=10122",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&avatarId=10122",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&avatarId=10122",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&avatarId=10122"
+                            },
+                            "displayName": "Medina de Miguel, Sergio",
+                            "active": true,
+                            "timeZone": "Europe/Dublin"
+                        },
+                        "created": "2019-02-13T16:27:00.000+0000",
+                        "items": [
+                            {
+                                "field": "description",
+                                "fieldtype": "jira",
+                                "from": null,
+                                "fromString": "h3. *1. Narrative*\r\n\r\n*As a* \r\n *I want* \r\n *So that* \r\n\r\n+Purpose of story+\r\n\r\nh3. *2. Visuals*\r\n\r\n\r\nh3. *3. Business rules*\r\nPENDING \r\n\r\nh3. *4. Acceptance criteria*\r\n\r\n(*) When tapping\r\n(*) Prices and totals\r\n(*) Collapse and expand??\r\n(*) PAX block per leg, to mention the story related to TP-2912\r\n\r\n",
+                                "to": null,
+                                "toString": "h3. *1. Narrative*\r\n\r\n*As a* user interested in purchase Special Equipment \r\n *I want* see option available for Music Equipment\r\n *So that* I can go into that category to purchase it\r\n\r\n+Purpose of story+\r\nSet the Music card and its behavior\r\n\r\nh3. *2. Visuals*\r\nhttps://app.zeplin.io/project/5be2a2994368b93d10a1f082/screen/5c5d4eadd82f4e353eb85b13\r\n\r\nh3. *3. Business rules*\r\nAmount limits per PAX and per flight is compiled in\r\nhttps://confluence.ryanair.com:8444/display/RYR3/3.+Special+Equipment\r\n\r\nh3. *4. Acceptance criteria*\r\n\r\n*CARD*\r\n(*) Music Card will look as per visuals. \r\n(*) When tapping the card it will expand *(if applies)* a previous expanded type of Equipment will be collapsed\r\n(*) Music Card will show the price indicating Each way, as per visuals\r\n\r\n*EXPANDED CARD*\r\n(*) Will show the info placeholder as per visuals. \r\n* Tapping it will expand it so as all the text will be shown, chevron will point upwards. And vice versa \r\n\r\n(*) Will show the legs and PAX involved (requirement in TP-2912) \r\n(*) Business rules above will apply to set the availability / maximum amount permitted per PAX / flight\r\n* Max amount per PAX will look as per visuals in zeplin link\r\n* No available sport equipment type will use the block defined in TP-2928\r\n"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2221135",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=medinas",
+                            "name": "medinas",
+                            "key": "medinas",
+                            "emailAddress": "medinas@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?avatarId=10122",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&avatarId=10122",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&avatarId=10122",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&avatarId=10122"
+                            },
+                            "displayName": "Medina de Miguel, Sergio",
+                            "active": true,
+                            "timeZone": "Europe/Dublin"
+                        },
+                        "created": "2019-02-13T16:28:16.000+0000",
+                        "items": [
+                            {
+                                "field": "description",
+                                "fieldtype": "jira",
+                                "from": null,
+                                "fromString": "h3. *1. Narrative*\r\n\r\n*As a* user interested in purchase Special Equipment \r\n *I want* see option available for Music Equipment\r\n *So that* I can go into that category to purchase it\r\n\r\n+Purpose of story+\r\nSet the Music card and its behavior\r\n\r\nh3. *2. Visuals*\r\nhttps://app.zeplin.io/project/5be2a2994368b93d10a1f082/screen/5c5d4eadd82f4e353eb85b13\r\n\r\nh3. *3. Business rules*\r\nAmount limits per PAX and per flight is compiled in\r\nhttps://confluence.ryanair.com:8444/display/RYR3/3.+Special+Equipment\r\n\r\nh3. *4. Acceptance criteria*\r\n\r\n*CARD*\r\n(*) Music Card will look as per visuals. \r\n(*) When tapping the card it will expand *(if applies)* a previous expanded type of Equipment will be collapsed\r\n(*) Music Card will show the price indicating Each way, as per visuals\r\n\r\n*EXPANDED CARD*\r\n(*) Will show the info placeholder as per visuals. \r\n* Tapping it will expand it so as all the text will be shown, chevron will point upwards. And vice versa \r\n\r\n(*) Will show the legs and PAX involved (requirement in TP-2912) \r\n(*) Business rules above will apply to set the availability / maximum amount permitted per PAX / flight\r\n* Max amount per PAX will look as per visuals in zeplin link\r\n* No available sport equipment type will use the block defined in TP-2928\r\n",
+                                "to": null,
+                                "toString": "h3. *1. Narrative*\r\n\r\n*As a* user interested in purchase Special Equipment \r\n *I want* see option available for Music Equipment\r\n *So that* I can go into that category to purchase it\r\n\r\n+Purpose of story+\r\nSet the Music card and its behavior\r\n\r\nh3. *2. Visuals*\r\nhttps://app.zeplin.io/project/5be2a2994368b93d10a1f082/screen/5c5d4eadd82f4e353eb85b13\r\n\r\nh3. *3. Business rules*\r\nAmount limits per PAX and per flight is compiled in\r\nhttps://confluence.ryanair.com:8444/display/RYR3/3.+Special+Equipment\r\n\r\nh3. *4. Acceptance criteria*\r\n\r\n*CARD*\r\n(*) Music Card will look as per visuals. \r\n(*) When tapping the card it will expand and *(if applies)* a previously expanded type of Equipment card will be collapsed\r\n(*) Music Card will show the price indicating Each way, as per visuals\r\n\r\n*EXPANDED CARD*\r\n(*) Will show the info placeholder as per visuals. \r\n* Tapping it will expand it so as all the text will be shown, chevron will point upwards. And vice versa \r\n\r\n(*) Will show the legs and PAX involved (requirement in TP-2912) \r\n(*) Business rules above will apply to set the availability / maximum amount permitted per PAX / flight\r\n* Max amount per PAX will look as per visuals in zeplin link\r\n* No available sport equipment type will use the block defined in TP-2928\r\n"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2221168",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=medinas",
+                            "name": "medinas",
+                            "key": "medinas",
+                            "emailAddress": "medinas@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?avatarId=10122",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&avatarId=10122",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&avatarId=10122",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&avatarId=10122"
+                            },
+                            "displayName": "Medina de Miguel, Sergio",
+                            "active": true,
+                            "timeZone": "Europe/Dublin"
+                        },
+                        "created": "2019-02-13T16:35:55.000+0000",
+                        "items": [
+                            {
+                                "field": "Collaboration Status",
+                                "fieldtype": "custom",
+                                "from": "12104",
+                                "fromString": "New",
+                                "to": "12105",
+                                "toString": "Ready for Refinement"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2225035",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=medinas",
+                            "name": "medinas",
+                            "key": "medinas",
+                            "emailAddress": "medinas@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?avatarId=10122",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&avatarId=10122",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&avatarId=10122",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&avatarId=10122"
+                            },
+                            "displayName": "Medina de Miguel, Sergio",
+                            "active": true,
+                            "timeZone": "Europe/Dublin"
+                        },
+                        "created": "2019-02-15T11:29:01.000+0000",
+                        "items": [
+                            {
+                                "field": "description",
+                                "fieldtype": "jira",
+                                "from": null,
+                                "fromString": "h3. *1. Narrative*\r\n\r\n*As a* user interested in purchase Special Equipment \r\n *I want* see option available for Music Equipment\r\n *So that* I can go into that category to purchase it\r\n\r\n+Purpose of story+\r\nSet the Music card and its behavior\r\n\r\nh3. *2. Visuals*\r\nhttps://app.zeplin.io/project/5be2a2994368b93d10a1f082/screen/5c5d4eadd82f4e353eb85b13\r\n\r\nh3. *3. Business rules*\r\nAmount limits per PAX and per flight is compiled in\r\nhttps://confluence.ryanair.com:8444/display/RYR3/3.+Special+Equipment\r\n\r\nh3. *4. Acceptance criteria*\r\n\r\n*CARD*\r\n(*) Music Card will look as per visuals. \r\n(*) When tapping the card it will expand and *(if applies)* a previously expanded type of Equipment card will be collapsed\r\n(*) Music Card will show the price indicating Each way, as per visuals\r\n\r\n*EXPANDED CARD*\r\n(*) Will show the info placeholder as per visuals. \r\n* Tapping it will expand it so as all the text will be shown, chevron will point upwards. And vice versa \r\n\r\n(*) Will show the legs and PAX involved (requirement in TP-2912) \r\n(*) Business rules above will apply to set the availability / maximum amount permitted per PAX / flight\r\n* Max amount per PAX will look as per visuals in zeplin link\r\n* No available sport equipment type will use the block defined in TP-2928\r\n",
+                                "to": null,
+                                "toString": "h3. *1. Narrative*\r\n\r\n*As a* user interested in purchase Special Equipment \r\n *I want* see option available for Music Equipment\r\n *So that* I can go into that category to purchase it\r\n\r\n+Purpose of story+\r\nSet the Music card and its behavior\r\n\r\nh3. *2. Visuals*\r\nhttps://app.zeplin.io/project/5be2a2994368b93d10a1f082/screen/5c5d4eadd82f4e353eb85b13\r\n\r\nh3. *3. Business rules*\r\nAmount limits per PAX and per flight is compiled in\r\nhttps://confluence.ryanair.com:8444/display/RYR3/3.+Special+Equipment\r\n\r\nh3. *4. Acceptance criteria*\r\n\r\n*CARD*\r\n(*) Music Card will look as per visuals. \r\n(*) When tapping the card it will expand and *(if applies)* a previously expanded type of Equipment card will be collapsed\r\n(*) Music Card will show the price indicating Each way, as per visuals\r\n\r\n*EXPANDED CARD*\r\n(*) Will show the info placeholder as per visuals. \r\n* Tapping it will expand it so as all the text will be shown, chevron will point upwards. And vice versa \r\n\r\n(*) Will show the legs and PAX involved (requirement in TP-2912) \r\n(*) Business rules above will apply to set the availability / maximum amount permitted per PAX / flight\r\n* Max amount per PAX will look as per visuals in zeplin link\r\n* No available for a leg will use the block defined in TP-2928\r\n"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2225038",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=medinas",
+                            "name": "medinas",
+                            "key": "medinas",
+                            "emailAddress": "medinas@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?avatarId=10122",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&avatarId=10122",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&avatarId=10122",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&avatarId=10122"
+                            },
+                            "displayName": "Medina de Miguel, Sergio",
+                            "active": true,
+                            "timeZone": "Europe/Dublin"
+                        },
+                        "created": "2019-02-15T11:29:19.000+0000",
+                        "items": [
+                            {
+                                "field": "description",
+                                "fieldtype": "jira",
+                                "from": null,
+                                "fromString": "h3. *1. Narrative*\r\n\r\n*As a* user interested in purchase Special Equipment \r\n *I want* see option available for Music Equipment\r\n *So that* I can go into that category to purchase it\r\n\r\n+Purpose of story+\r\nSet the Music card and its behavior\r\n\r\nh3. *2. Visuals*\r\nhttps://app.zeplin.io/project/5be2a2994368b93d10a1f082/screen/5c5d4eadd82f4e353eb85b13\r\n\r\nh3. *3. Business rules*\r\nAmount limits per PAX and per flight is compiled in\r\nhttps://confluence.ryanair.com:8444/display/RYR3/3.+Special+Equipment\r\n\r\nh3. *4. Acceptance criteria*\r\n\r\n*CARD*\r\n(*) Music Card will look as per visuals. \r\n(*) When tapping the card it will expand and *(if applies)* a previously expanded type of Equipment card will be collapsed\r\n(*) Music Card will show the price indicating Each way, as per visuals\r\n\r\n*EXPANDED CARD*\r\n(*) Will show the info placeholder as per visuals. \r\n* Tapping it will expand it so as all the text will be shown, chevron will point upwards. And vice versa \r\n\r\n(*) Will show the legs and PAX involved (requirement in TP-2912) \r\n(*) Business rules above will apply to set the availability / maximum amount permitted per PAX / flight\r\n* Max amount per PAX will look as per visuals in zeplin link\r\n* No available for a leg will use the block defined in TP-2928\r\n",
+                                "to": null,
+                                "toString": "h3. *1. Narrative*\r\n\r\n*As a* user interested in purchase Special Equipment \r\n *I want* see option available for Music Equipment\r\n *So that* I can go into that category to purchase it\r\n\r\n+Purpose of story+\r\nSet the Music card and its behavior\r\n\r\nh3. *2. Visuals*\r\nhttps://app.zeplin.io/project/5be2a2994368b93d10a1f082/screen/5c5d4eadd82f4e353eb85b13\r\n\r\nh3. *3. Business rules*\r\nAmount limits per PAX and per flight is compiled in\r\nhttps://confluence.ryanair.com:8444/display/RYR3/3.+Special+Equipment\r\n\r\nh3. *4. Acceptance criteria*\r\n\r\n*CARD*\r\n(*) Music Card will look as per visuals. \r\n(*) When tapping the card it will expand and *(if applies)* a previously expanded type of Equipment card will be collapsed\r\n(*) Music Card will show the price indicating Each way, as per visuals\r\n\r\n*EXPANDED CARD*\r\n(*) Will show the info placeholder as per visuals. \r\n* Tapping it will expand it so as all the text will be shown, chevron will point upwards. And vice versa \r\n\r\n(*) Will show the legs and PAX involved (requirement in TP-2912) \r\n(*) Business rules above will apply to set the availability / maximum amount permitted per PAX / flight\r\n* Max amount per PAX will look as per visuals in zeplin link\r\n* No available status for a leg will use the block defined in TP-2928\r\n"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2256915",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=medinas",
+                            "name": "medinas",
+                            "key": "medinas",
+                            "emailAddress": "medinas@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?avatarId=10122",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&avatarId=10122",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&avatarId=10122",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&avatarId=10122"
+                            },
+                            "displayName": "Medina de Miguel, Sergio",
+                            "active": true,
+                            "timeZone": "Europe/Dublin"
+                        },
+                        "created": "2019-03-05T10:51:40.000+0000",
+                        "items": [
+                            {
+                                "field": "description",
+                                "fieldtype": "jira",
+                                "from": null,
+                                "fromString": "h3. *1. Narrative*\r\n\r\n*As a* user interested in purchase Special Equipment \r\n *I want* see option available for Music Equipment\r\n *So that* I can go into that category to purchase it\r\n\r\n+Purpose of story+\r\nSet the Music card and its behavior\r\n\r\nh3. *2. Visuals*\r\nhttps://app.zeplin.io/project/5be2a2994368b93d10a1f082/screen/5c5d4eadd82f4e353eb85b13\r\n\r\nh3. *3. Business rules*\r\nAmount limits per PAX and per flight is compiled in\r\nhttps://confluence.ryanair.com:8444/display/RYR3/3.+Special+Equipment\r\n\r\nh3. *4. Acceptance criteria*\r\n\r\n*CARD*\r\n(*) Music Card will look as per visuals. \r\n(*) When tapping the card it will expand and *(if applies)* a previously expanded type of Equipment card will be collapsed\r\n(*) Music Card will show the price indicating Each way, as per visuals\r\n\r\n*EXPANDED CARD*\r\n(*) Will show the info placeholder as per visuals. \r\n* Tapping it will expand it so as all the text will be shown, chevron will point upwards. And vice versa \r\n\r\n(*) Will show the legs and PAX involved (requirement in TP-2912) \r\n(*) Business rules above will apply to set the availability / maximum amount permitted per PAX / flight\r\n* Max amount per PAX will look as per visuals in zeplin link\r\n* No available status for a leg will use the block defined in TP-2928\r\n",
+                                "to": null,
+                                "toString": "h3. *1. Narrative*\r\n\r\n*As a* user interested in purchase Special Equipment \r\n *I want* see option available for Music Equipment\r\n *So that* I can go into that category to purchase it\r\n\r\n+Purpose of story+\r\nSet the Music card and its behavior\r\n\r\nh3. *2. Visuals*\r\nhttps://app.zeplin.io/project/5be2a2994368b93d10a1f082/screen/5c5d4eae7ade0d2cb4c78360\r\n\r\nh3. *3. Business rules*\r\nAmount limits per PAX and per flight is compiled in\r\nhttps://confluence.ryanair.com:8444/display/RYR3/3.+Special+Equipment\r\n\r\nh3. *4. Acceptance criteria*\r\n\r\n*CARD*\r\n(*) Music Card will look as per visuals. \r\n(*) When tapping the card it will expand and *(if applies)* a previously expanded type of Equipment card will be collapsed\r\n(*) Music Card will show the price indicating Each way, as per visuals\r\n\r\n*EXPANDED CARD*\r\n(*) Will show the info placeholder as per visuals. \r\n* Tapping it will expand it so as all the text will be shown, chevron will point upwards. And vice versa \r\n\r\n(*) Will show the legs and PAX involved (requirement in TP-2912) \r\n(*) Business rules above will apply to set the availability / maximum amount permitted per PAX / flight\r\n* Max amount per PAX will look as per visuals in zeplin link\r\n* No available status for a leg will use the block defined in TP-2928\r\n"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2256921",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=medinas",
+                            "name": "medinas",
+                            "key": "medinas",
+                            "emailAddress": "medinas@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?avatarId=10122",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&avatarId=10122",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&avatarId=10122",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&avatarId=10122"
+                            },
+                            "displayName": "Medina de Miguel, Sergio",
+                            "active": true,
+                            "timeZone": "Europe/Dublin"
+                        },
+                        "created": "2019-03-05T10:53:20.000+0000",
+                        "items": [
+                            {
+                                "field": "Collaboration Status",
+                                "fieldtype": "custom",
+                                "from": "12105",
+                                "fromString": "Ready for Refinement",
+                                "to": "12107",
+                                "toString": "Ready for Planning"
+                            },
+                            {
+                                "field": "Story Points",
+                                "fieldtype": "custom",
+                                "from": null,
+                                "fromString": null,
+                                "to": null,
+                                "toString": "3"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2280126",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=ortizs",
+                            "name": "ortizs",
+                            "key": "ortizs",
+                            "emailAddress": "ortizs@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?ownerId=ortizs&avatarId=13028",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&ownerId=ortizs&avatarId=13028",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&ownerId=ortizs&avatarId=13028",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&ownerId=ortizs&avatarId=13028"
+                            },
+                            "displayName": "Ortiz Torrijos, Sergio",
+                            "active": true,
+                            "timeZone": "Europe/Madrid"
+                        },
+                        "created": "2019-03-19T09:09:54.000+0000",
+                        "items": [
+                            {
+                                "field": "Rank",
+                                "fieldtype": "custom",
+                                "from": "",
+                                "fromString": "",
+                                "to": "",
+                                "toString": "Ranked higher"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2280131",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=ortizs",
+                            "name": "ortizs",
+                            "key": "ortizs",
+                            "emailAddress": "ortizs@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?ownerId=ortizs&avatarId=13028",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&ownerId=ortizs&avatarId=13028",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&ownerId=ortizs&avatarId=13028",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&ownerId=ortizs&avatarId=13028"
+                            },
+                            "displayName": "Ortiz Torrijos, Sergio",
+                            "active": true,
+                            "timeZone": "Europe/Madrid"
+                        },
+                        "created": "2019-03-19T09:10:19.000+0000",
+                        "items": [
+                            {
+                                "field": "Rank",
+                                "fieldtype": "custom",
+                                "from": "",
+                                "fromString": "",
+                                "to": "",
+                                "toString": "Ranked higher"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2297936",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=marguliesm",
+                            "name": "marguliesm",
+                            "key": "marguliesm",
+                            "emailAddress": "marguliesm@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?ownerId=marguliesm&avatarId=14501",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&ownerId=marguliesm&avatarId=14501",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&ownerId=marguliesm&avatarId=14501",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&ownerId=marguliesm&avatarId=14501"
+                            },
+                            "displayName": "Margulies, Marcos",
+                            "active": true,
+                            "timeZone": "Europe/Warsaw"
+                        },
+                        "created": "2019-03-26T14:08:11.000+0000",
+                        "items": [
+                            {
+                                "field": "Fix Version",
+                                "fieldtype": "jira",
+                                "from": null,
+                                "fromString": null,
+                                "to": "17753",
+                                "toString": "Flights Extras (Special Equipment)"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2305340",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=medinas",
+                            "name": "medinas",
+                            "key": "medinas",
+                            "emailAddress": "medinas@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?avatarId=10122",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&avatarId=10122",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&avatarId=10122",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&avatarId=10122"
+                            },
+                            "displayName": "Medina de Miguel, Sergio",
+                            "active": true,
+                            "timeZone": "Europe/Dublin"
+                        },
+                        "created": "2019-03-29T12:46:21.000+0000",
+                        "items": [
+                            {
+                                "field": "Rank",
+                                "fieldtype": "custom",
+                                "from": "",
+                                "fromString": "",
+                                "to": "",
+                                "toString": "Ranked higher"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2330666",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=cacerespradoa",
+                            "name": "cacerespradoa",
+                            "key": "cacerespradoa",
+                            "emailAddress": "cacerespradoa@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?ownerId=cacerespradoa&avatarId=16003",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&ownerId=cacerespradoa&avatarId=16003",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&ownerId=cacerespradoa&avatarId=16003",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&ownerId=cacerespradoa&avatarId=16003"
+                            },
+                            "displayName": "Caceres Prado, Alejandro",
+                            "active": true,
+                            "timeZone": "Europe/Dublin"
+                        },
+                        "created": "2019-04-11T16:21:08.000+0100",
+                        "items": [
+                            {
+                                "field": "Sprint",
+                                "fieldtype": "custom",
+                                "from": null,
+                                "fromString": null,
+                                "to": "1980",
+                                "toString": "Space Invaders - Sprint 11"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2330667",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=cacerespradoa",
+                            "name": "cacerespradoa",
+                            "key": "cacerespradoa",
+                            "emailAddress": "cacerespradoa@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?ownerId=cacerespradoa&avatarId=16003",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&ownerId=cacerespradoa&avatarId=16003",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&ownerId=cacerespradoa&avatarId=16003",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&ownerId=cacerespradoa&avatarId=16003"
+                            },
+                            "displayName": "Caceres Prado, Alejandro",
+                            "active": true,
+                            "timeZone": "Europe/Dublin"
+                        },
+                        "created": "2019-04-11T16:21:10.000+0100",
+                        "items": [
+                            {
+                                "field": "status",
+                                "fieldtype": "jira",
+                                "from": "1",
+                                "fromString": "Open",
+                                "to": "3",
+                                "toString": "In Progress"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2330805",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=cacerespradoa",
+                            "name": "cacerespradoa",
+                            "key": "cacerespradoa",
+                            "emailAddress": "cacerespradoa@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?ownerId=cacerespradoa&avatarId=16003",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&ownerId=cacerespradoa&avatarId=16003",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&ownerId=cacerespradoa&avatarId=16003",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&ownerId=cacerespradoa&avatarId=16003"
+                            },
+                            "displayName": "Caceres Prado, Alejandro",
+                            "active": true,
+                            "timeZone": "Europe/Dublin"
+                        },
+                        "created": "2019-04-11T16:58:40.000+0100",
+                        "items": [
+                            {
+                                "field": "assignee",
+                                "fieldtype": "jira",
+                                "from": "medinas",
+                                "fromString": "Medina de Miguel, Sergio",
+                                "to": "cacerespradoa",
+                                "toString": "Caceres Prado, Alejandro"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2330873",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=cacerespradoa",
+                            "name": "cacerespradoa",
+                            "key": "cacerespradoa",
+                            "emailAddress": "cacerespradoa@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?ownerId=cacerespradoa&avatarId=16003",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&ownerId=cacerespradoa&avatarId=16003",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&ownerId=cacerespradoa&avatarId=16003",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&ownerId=cacerespradoa&avatarId=16003"
+                            },
+                            "displayName": "Caceres Prado, Alejandro",
+                            "active": true,
+                            "timeZone": "Europe/Dublin"
+                        },
+                        "created": "2019-04-11T18:52:35.000+0100",
+                        "items": [
+                            {
+                                "field": "status",
+                                "fieldtype": "jira",
+                                "from": "3",
+                                "fromString": "In Progress",
+                                "to": "11609",
+                                "toString": "Merged to Master"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2331020",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=cacerespradoa",
+                            "name": "cacerespradoa",
+                            "key": "cacerespradoa",
+                            "emailAddress": "cacerespradoa@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?ownerId=cacerespradoa&avatarId=16003",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&ownerId=cacerespradoa&avatarId=16003",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&ownerId=cacerespradoa&avatarId=16003",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&ownerId=cacerespradoa&avatarId=16003"
+                            },
+                            "displayName": "Caceres Prado, Alejandro",
+                            "active": true,
+                            "timeZone": "Europe/Dublin"
+                        },
+                        "created": "2019-04-12T08:18:06.000+0100",
+                        "items": [
+                            {
+                                "field": "status",
+                                "fieldtype": "jira",
+                                "from": "11609",
+                                "fromString": "Merged to Master",
+                                "to": "3",
+                                "toString": "In Progress"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2331021",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=cacerespradoa",
+                            "name": "cacerespradoa",
+                            "key": "cacerespradoa",
+                            "emailAddress": "cacerespradoa@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?ownerId=cacerespradoa&avatarId=16003",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&ownerId=cacerespradoa&avatarId=16003",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&ownerId=cacerespradoa&avatarId=16003",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&ownerId=cacerespradoa&avatarId=16003"
+                            },
+                            "displayName": "Caceres Prado, Alejandro",
+                            "active": true,
+                            "timeZone": "Europe/Dublin"
+                        },
+                        "created": "2019-04-12T08:18:15.000+0100",
+                        "items": [
+                            {
+                                "field": "status",
+                                "fieldtype": "jira",
+                                "from": "3",
+                                "fromString": "In Progress",
+                                "to": "11609",
+                                "toString": "Merged to Master"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2331022",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=cacerespradoa",
+                            "name": "cacerespradoa",
+                            "key": "cacerespradoa",
+                            "emailAddress": "cacerespradoa@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?ownerId=cacerespradoa&avatarId=16003",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&ownerId=cacerespradoa&avatarId=16003",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&ownerId=cacerespradoa&avatarId=16003",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&ownerId=cacerespradoa&avatarId=16003"
+                            },
+                            "displayName": "Caceres Prado, Alejandro",
+                            "active": true,
+                            "timeZone": "Europe/Dublin"
+                        },
+                        "created": "2019-04-12T08:18:47.000+0100",
+                        "items": [
+                            {
+                                "field": "status",
+                                "fieldtype": "jira",
+                                "from": "11609",
+                                "fromString": "Merged to Master",
+                                "to": "3",
+                                "toString": "In Progress"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2331027",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=cacerespradoa",
+                            "name": "cacerespradoa",
+                            "key": "cacerespradoa",
+                            "emailAddress": "cacerespradoa@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?ownerId=cacerespradoa&avatarId=16003",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&ownerId=cacerespradoa&avatarId=16003",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&ownerId=cacerespradoa&avatarId=16003",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&ownerId=cacerespradoa&avatarId=16003"
+                            },
+                            "displayName": "Caceres Prado, Alejandro",
+                            "active": true,
+                            "timeZone": "Europe/Dublin"
+                        },
+                        "created": "2019-04-12T08:18:58.000+0100",
+                        "items": [
+                            {
+                                "field": "status",
+                                "fieldtype": "jira",
+                                "from": "3",
+                                "fromString": "In Progress",
+                                "to": "10810",
+                                "toString": "Code Review"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2331032",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=cacerespradoa",
+                            "name": "cacerespradoa",
+                            "key": "cacerespradoa",
+                            "emailAddress": "cacerespradoa@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?ownerId=cacerespradoa&avatarId=16003",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&ownerId=cacerespradoa&avatarId=16003",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&ownerId=cacerespradoa&avatarId=16003",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&ownerId=cacerespradoa&avatarId=16003"
+                            },
+                            "displayName": "Caceres Prado, Alejandro",
+                            "active": true,
+                            "timeZone": "Europe/Dublin"
+                        },
+                        "created": "2019-04-12T08:19:13.000+0100",
+                        "items": [
+                            {
+                                "field": "status",
+                                "fieldtype": "jira",
+                                "from": "10810",
+                                "fromString": "Code Review",
+                                "to": "11607",
+                                "toString": "In Test in TST"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2333761",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=marguliesm",
+                            "name": "marguliesm",
+                            "key": "marguliesm",
+                            "emailAddress": "marguliesm@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?ownerId=marguliesm&avatarId=14501",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&ownerId=marguliesm&avatarId=14501",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&ownerId=marguliesm&avatarId=14501",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&ownerId=marguliesm&avatarId=14501"
+                            },
+                            "displayName": "Margulies, Marcos",
+                            "active": true,
+                            "timeZone": "Europe/Warsaw"
+                        },
+                        "created": "2019-04-15T07:41:56.000+0100",
+                        "items": [
+                            {
+                                "field": "Sprint",
+                                "fieldtype": "custom",
+                                "from": "1980",
+                                "fromString": "Space Invaders - Sprint 11",
+                                "to": "1980, 2002",
+                                "toString": "Space Invaders - Sprint 11, Space Invaders - Sprint 12"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2340957",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=melnyki",
+                            "name": "melnyki",
+                            "key": "melnyki",
+                            "emailAddress": "melnyki@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?ownerId=melnyki&avatarId=13029",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&ownerId=melnyki&avatarId=13029",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&ownerId=melnyki&avatarId=13029",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&ownerId=melnyki&avatarId=13029"
+                            },
+                            "displayName": "Melnyk, Iryna",
+                            "active": true,
+                            "timeZone": "Europe/Amsterdam"
+                        },
+                        "created": "2019-04-17T10:39:23.000+0100",
+                        "items": [
+                            {
+                                "field": "Link",
+                                "fieldtype": "jira",
+                                "from": null,
+                                "fromString": null,
+                                "to": "TP-5326",
+                                "toString": "This issue associated with TP-5326"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2344441",
+                        "author": {
+                            "self": "https://jira.ryanair.com:8443/rest/api/2/user?username=melnyki",
+                            "name": "melnyki",
+                            "key": "melnyki",
+                            "emailAddress": "melnyki@ryanair.com",
+                            "avatarUrls": {
+                                "48x48": "https://jira.ryanair.com:8443/secure/useravatar?ownerId=melnyki&avatarId=13029",
+                                "24x24": "https://jira.ryanair.com:8443/secure/useravatar?size=small&ownerId=melnyki&avatarId=13029",
+                                "16x16": "https://jira.ryanair.com:8443/secure/useravatar?size=xsmall&ownerId=melnyki&avatarId=13029",
+                                "32x32": "https://jira.ryanair.com:8443/secure/useravatar?size=medium&ownerId=melnyki&avatarId=13029"
+                            },
+                            "displayName": "Melnyk, Iryna",
+                            "active": true,
+                            "timeZone": "Europe/Amsterdam"
+                        },
+                        "created": "2019-04-18T12:51:28.000+0100",
+                        "items": [
+                            {
+                                "field": "status",
+                                "fieldtype": "jira",
+                                "from": "11607",
+                                "fromString": "In Test in TST",
+                                "to": "6",
+                                "toString": "Closed"
+                            },
+                            {
+                                "field": "resolution",
+                                "fieldtype": "jira",
+                                "from": null,
+                                "fromString": null,
+                                "to": "10000",
+                                "toString": "Done"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
+    "names": {
+        "customfield_13100": "Asset",
+        "customfield_13102": "URL",
+        "fixVersions": "Fix Version/s",
+        "customfield_13101": "PORT",
+        "customfield_11200": "Aha! Reference",
+        "resolution": "Resolution",
+        "customfield_11201": "Severity",
+        "customfield_13103": "Risk",
+        "customfield_11202": "T-Shirt Size",
+        "customfield_11711": "Deadline",
+        "customfield_12800": "Reason for Pending?",
+        "customfield_12007": "Request Type",
+        "customfield_11710": "Source System",
+        "customfield_11713": "Date Range",
+        "customfield_11712": "CAB Required?",
+        "customfield_12801": "Pending exit date",
+        "customfield_10900": "Device ID",
+        "customfield_11715": "Filters",
+        "customfield_11714": "Report Columns",
+        "customfield_10902": "Device SN",
+        "customfield_11716": "Scrum Team",
+        "lastViewed": "Last Viewed",
+        "customfield_12000": "Title",
+        "customfield_12002": "Surname",
+        "customfield_12001": "First Name",
+        "priority": "Priority",
+        "customfield_12004": "Address",
+        "customfield_12003": "Phone Number",
+        "customfield_12006": "Document Number",
+        "labels": "Labels",
+        "customfield_12401": "GDPR Impact",
+        "customfield_12005": "PNR",
+        "customfield_11702": "Report Notes",
+        "customfield_11704": "Business Case",
+        "timeestimate": "Remaining Estimate",
+        "aggregatetimeoriginalestimate": "Σ Original Estimate",
+        "versions": "Affects Version/s",
+        "customfield_11703": "New or Maintenance",
+        "customfield_11706": "Purpose",
+        "customfield_11705": "Report Owner",
+        "customfield_11708": "Frequency",
+        "customfield_11707": "Does a similar report exist...?",
+        "issuelinks": "Linked Issues",
+        "customfield_11709": "Audience",
+        "assignee": "Assignee",
+        "status": "Status",
+        "components": "Component/s",
+        "customfield_13201": "VULTRK Env. List",
+        "customfield_13200": "Risk Accepted",
+        "customfield_11300": "BOPriority",
+        "customfield_12503": "Due into Prod.",
+        "customfield_12502": "Due into OAT",
+        "customfield_12900": "AL Environment",
+        "aggregatetimeestimate": "Σ Remaining Estimate",
+        "creator": "Creator",
+        "subtasks": "Sub-Tasks",
+        "reporter": "Reporter",
+        "customfield_12101": "Collaboration Status",
+        "customfield_12100": "ProjType",
+        "aggregateprogress": "Σ Progress",
+        "customfield_12103": "Request Type",
+        "customfield_12102": "Request Area",
+        "customfield_12501": "Due into SIT",
+        "customfield_12500": "Due into Dev",
+        "customfield_11803": "ResourceType",
+        "customfield_11802": "PCI Impacting?",
+        "customfield_11804": "ROCS Milestone Due Date",
+        "progress": "Progress",
+        "votes": "Votes",
+        "issuetype": "Issue Type",
+        "timespent": "Time Spent",
+        "project": "Project",
+        "customfield_13300": "Likelihood",
+        "aggregatetimespent": "Σ Time Spent",
+        "customfield_13301": "Risk Score",
+        "customfield_11400": "Rank",
+        "customfield_12602": "ScrumMaster",
+        "customfield_10700": "Preferred Delivery Date",
+        "customfield_12604": "Pen. Test # Medium",
+        "customfield_10701": "Delivery Date Justification",
+        "customfield_12603": "Pen. Test # High",
+        "customfield_10702": "Priority Justification",
+        "customfield_12606": "Pen. Test # Info",
+        "customfield_10703": "Account",
+        "customfield_12605": "Pen. Test # Low",
+        "customfield_10704": "Team",
+        "resolutiondate": "Resolved",
+        "customfield_10705": "Iteration",
+        "workratio": "Work Ratio",
+        "watches": "Watchers",
+        "created": "Created",
+        "customfield_12200": "Have you linked your issue?",
+        "customfield_12201": "Share with:",
+        "customfield_11902": "ROCS Product",
+        "customfield_11901": "Confirmed by QA",
+        "customfield_11903": "issueFunction",
+        "updated": "Updated",
+        "timeoriginalestimate": "Original Estimate",
+        "description": "Description",
+        "customfield_13000": "BTS Environment",
+        "customfield_10010": "Release Version History",
+        "customfield_11100": "Issue Range",
+        "customfield_13400": "Touchpoint",
+        "customfield_10005": "Sprint",
+        "customfield_12701": "Jenkins Release Num.",
+        "customfield_10006": "Epic Link",
+        "customfield_12700": "QA Lead",
+        "customfield_12703": "Risk Estimation",
+        "customfield_12702": "RAG Status",
+        "customfield_10801": "Tags",
+        "customfield_10802": "Automation Status",
+        "customfield_12704": "Pen. Test # Critical",
+        "summary": "Summary",
+        "customfield_10000": "Flagged",
+        "customfield_10001": "Epic/Theme",
+        "customfield_12301": "Team Role",
+        "customfield_10002": "Story Points",
+        "customfield_12300": "Development",
+        "customfield_10003": "Business Value",
+        "customfield_10004": "Rank (Obsolete)",
+        "customfield_11601": "UAT Date",
+        "customfield_11600": "Project Summary",
+        "environment": "Environment",
+        "customfield_11602": "Dev Date",
+        "customfield_11604": "Software",
+        "duedate": "Due Date"
+    }
+}

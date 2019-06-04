@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from '../services/data-service.service';
+import { JiraDataItem } from '../models/status-history.model';
 
 interface FlatStatus {
   status: string;
@@ -15,13 +16,13 @@ export class ChartAreaComponent implements OnInit {
   constructor(private dataService: DataService) { }
   query = '';
 
-  public chartDataFiltered: Array<any> = [];
+  public chartDataFiltered: Array<JiraDataItem> = [];
 
   public chartLabelsFiltered: Array<string> = [];
 
   public chartDataTotal: Array<number> = [];
-  public chartData: Array<any> = [];
-
+  public chartData: Array<JiraDataItem> = [];
+  public chartUnselected: Array<number> = [];
   public chartLabels: Array<string> = [
     'Open',
     'In Progress',
@@ -58,7 +59,7 @@ export class ChartAreaComponent implements OnInit {
     this.dataService.getDaysPerStatus(this.query).subscribe(data => {
       console.log('tickets from jira:');
       console.dir(data);
-      const chartData = data.map(d => {
+      const chartData = <JiraDataItem[]>data.map(d => {
         // console.log("data:"); console.dir(d);
         // map to buckets of Open, In Progress, Blocked, Code Review, Merged, TestInDev, TestInSit, Closed
         return {
@@ -160,13 +161,9 @@ export class ChartAreaComponent implements OnInit {
                 }
               });
             }
-            // console.log('dumping flat stats');
-            // console.dir(flattenedStatus);
+
             // map to buckets of Open, In Progress, Blocked, Code Review, Merged, TestInDev, TestInSit, Closed
-            const arr: Array<any> = [];
-            // if (flattenedStatus.find(i => i.status === 'Open')) {
-            // arr.push
-            // }
+            const arr: Array<number> = [];
             let tmpVal: FlatStatus;
             arr.push(
               (tmpVal = flattenedStatus.find(i => i.status === 'Open'))
@@ -249,21 +246,12 @@ export class ChartAreaComponent implements OnInit {
           })(d)
         };
       });
-      // d.forEach(element => {
-      //   console.dir(element);
-      // });
-      // console.log('d:');
-      // console.dir(d);
-
-
 
       this.chartData = chartData;
+      this.calculateAverage();
+
       this.chartDataFiltered = this.chartData;
       this.chartLabelsFiltered = this.chartLabels;
-      // this.chartData.push(data[0]);
-
-      // console.log(this.chartData);
-      this.calculateAverage();
     });
   }
 
@@ -281,7 +269,7 @@ export class ChartAreaComponent implements OnInit {
       control[l] = 0;
     }
 
-    for (const d of this.chartDataFiltered) {
+    for (const d of this.chartData) {
       for (let _i = 0; _i < d.data.length; _i++) {
         if (d.data[_i] > 0) {
           control[_i]++;
@@ -296,7 +284,7 @@ export class ChartAreaComponent implements OnInit {
       }
     }
     console.log(this.chartDataTotal);
-    this.chartDataFiltered.push(average);
+    this.chartData.push(average);
   }
 
   // events
@@ -327,42 +315,33 @@ export class ChartAreaComponent implements OnInit {
   }
 
   onEnter(value: string) {
-    this.chartDataFiltered = new Array<any>();
+    this.chartDataFiltered = [];
     this.query = value;
     this.createChart();
   }
 
   CheckFieldsChange(values: any) {
-    /* console.log(values.currentTarget.value);
-    console.log(values.currentTarget.checked);
-    console.log(this.chartLabels.indexOf(values.currentTarget.value)); */
-    return;
+    const index = this.chartLabels.indexOf(values.currentTarget.value);
 
     if (values.currentTarget.checked) {
-
-      // const index = this.chartLabels.indexOf(values.currentTarget.value);
-      this.chartLabelsFiltered = this.chartLabels;
-      this.chartDataFiltered = this.chartData;
-
-    } else {
-
-      const index = this.chartLabels.indexOf(values.currentTarget.value);
-
-      this.chartDataFiltered = Array.from(this.chartData);
-      /*this.chartDataFiltered.forEach(element => {
-        console.log(element);
-        element.data = Array.from(element.data.filter((_, i) => index.indexOf(i) <= -1));
-      });
-*/
-      for (let i = 0; i < this.chartDataFiltered.length; i++) {
-        const element = this.chartDataFiltered[i];
-        if (i === index) {
-          console.log(element);
-        }
+      const itemIndex = this.chartUnselected.indexOf(index, 0);
+      if (itemIndex > -1) {
+        this.chartUnselected.splice(itemIndex, 1);
       }
-
-      this.chartLabelsFiltered = this.chartLabels.filter(obj => obj !== values.currentTarget.value);
-      // this.chartDataFiltered = this.chartData.filter(obj => obj !== index);
+    } else {
+      this.chartUnselected.push(index);
     }
+    this.chartLabelsFiltered = this.chartLabels.filter((_, i) => this.chartUnselected.indexOf(i) <= -1);
+
+    this.chartDataFiltered = [];
+    this.chartData.forEach(element => {
+      const newItem: JiraDataItem = new JiraDataItem();
+      newItem.label = element.label;
+      newItem.type = element.type;
+      newItem.data = element.data.filter((_, i) => this.chartUnselected.indexOf(i) <= -1);
+
+      this.chartDataFiltered.push(newItem);
+    });
+
   }
 }

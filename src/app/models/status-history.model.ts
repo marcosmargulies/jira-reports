@@ -6,3 +6,9 @@ export class StatusStory {
     from: string;
     to: string;
 }
+
+export class JiraDataItem {
+    label: string;
+    type: string;
+    data: number[];
+}

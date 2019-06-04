@@ -14,7 +14,7 @@
     No data
   </div>
 </div>
-<div class="row" *ngIf="chartData.length > 0">
+<div class="row" *ngIf="chartLabelsFiltered!=0">
   <div class="col-md-6">
     <div style="display: block;">
       <canvas baseChart [datasets]="chartDataFiltered" [labels]="chartLabelsFiltered" [options]="chartOptions"
