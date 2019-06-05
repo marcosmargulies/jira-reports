@@ -110,6 +110,7 @@ export class ChartAreaComponent implements OnInit {
                     statusName = 'On Test Env';
                     break;
                   case 'readyformergetodev':
+                  case 'readyformergetodev.':
                     statusName = 'Ready to merge to DEV';
                     break;
                   case 'intestindev':
@@ -311,7 +312,7 @@ export class ChartAreaComponent implements OnInit {
   }
 
   public chartHovered(e: any): void {
-    console.log(e);
+    // console.log(e);
   }
 
   onEnter(value: string) {
