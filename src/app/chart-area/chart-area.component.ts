@@ -42,7 +42,21 @@ export class ChartAreaComponent implements OnInit {
   ];
 
   public chartOptions: any = {
-    responsive: true
+    responsive: true,
+    tooltips: {
+      callbacks: {
+        label: function (tooltipItem, data) {
+          const total = +tooltipItem.value;
+          const label = data.datasets[tooltipItem.datasetIndex].label + ': ';
+          if (total < 1) {
+            return label + (total * 24).toFixed(2) + ' hours';
+          }
+          return label + total.toFixed(2) + ' days';
+          // const account = this.chartDataFiltered[tooltipItem.index];
+          // return account.accountNumber + ':' + account.balance + '€';
+        }
+      }
+    }
   };
 
   public chartLegend = true;
