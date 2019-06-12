@@ -11,19 +11,8 @@ export class DataService {
     'Content-type': 'application/json'
   });
   private jiraUrl = 'https://jira.ryanair.com:8443/rest/api/2/';
-  private username = 'username';
-  private pass = 'password';
 
   constructor(private http: HttpClient) { }
-
-  private setAuth(username: string, pass: string) {
-    this.username = username;
-    this.pass = pass;
-    this.headers.append(
-      'Authorization',
-      'Basic ' + window.btoa(`${username}:${pass}`)
-    );
-  }
 
   private getIssues(jqlString: string): Observable<any> {
     // return this.http.get('./assets/json/jiramock.json');
@@ -45,7 +34,7 @@ export class DataService {
   }
 
   public getDaysPerStatus(query: string): Observable<any> {
-    const obs = this.getData(query).pipe(
+    const obs = this.getIssues(query).pipe(
       map(data => {
         const a: Array<any> = [];
         data.issues.forEach(issue => {
@@ -137,8 +126,19 @@ export class DataService {
 
       return sh;
     }
-  */
-  public getData(query: string): Observable<any> {
-    return this.getIssues(query);
+
+      private username = 'username';
+  private pass = 'password';
+
+  private setAuth(username: string, pass: string) {
+    this.username = username;
+    this.pass = pass;
+    this.headers.append(
+      'Authorization',
+      'Basic ' + window.btoa(`${username}:${pass}`)
+    );
   }
+
+  */
+
 }

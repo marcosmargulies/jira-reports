@@ -52,8 +52,6 @@ export class ChartAreaComponent implements OnInit {
             return label + (total * 24).toFixed(2) + ' hours';
           }
           return label + total.toFixed(2) + ' days';
-          // const account = this.chartDataFiltered[tooltipItem.index];
-          // return account.accountNumber + ':' + account.balance + '€';
         }
       }
     }
