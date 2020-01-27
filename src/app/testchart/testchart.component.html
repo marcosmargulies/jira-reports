@@ -1,0 +1,54 @@
+<div>
+  JIRA query
+  <input
+    #box
+    (keyup.enter)="onEnter(box.value)"
+    width="400px"
+    value="{{ query }}"
+  />
+  <a routerLink="/report" routerLinkActive="active">Old Version</a>
+</div>
+
+<p>
+  <google-chart
+    [data]="chartData"
+    (mouseOver)="mouseOver($event)"
+  ></google-chart>
+</p>
+
+<div style="display: flex">
+  <div
+    id="cdk-drop-list-used"
+    class="border"
+    cdkDropList
+    [cdkDropListData]="usedStatus"
+    [cdkDropListConnectedTo]="secondList"
+    #firstList="cdkDropList"
+    (cdkDropListDropped)="drop($event)"
+    style="width: 50%"
+  >
+    <p>
+      Used Status (drag and drop to reorder)
+    </p>
+    <div *ngFor="let status of usedStatus" class="pop" cdkDrag>
+      {{ status }}
+    </div>
+  </div>
+  <div
+    id="cdk-drop-list-unused"
+    class="border"
+    cdkDropList
+    [cdkDropListData]="unusedStatus"
+    [cdkDropListConnectedTo]="firstList"
+    #secondList="cdkDropList"
+    (cdkDropListDropped)="drop($event)"
+    style="width: 50%"
+  >
+    <p>
+      Not used Status
+    </p>
+    <div *ngFor="let status of unusedStatus" class="pop" cdkDrag>
+      {{ status }}
+    </div>
+  </div>
+</div>
