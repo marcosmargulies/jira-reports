@@ -15,6 +15,7 @@ import { TestchartComponent } from "./testchart/testchart.component";
 import { Ng2GoogleChartsModule } from "ng2-google-charts";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { DragDropModule } from "@angular/cdk/drag-drop";
+import { ArrayToCsvPipe } from "./pipes/array-to-csv.pipe";
 
 const appRoutes: Routes = [
   {
@@ -31,7 +32,8 @@ const appRoutes: Routes = [
     AppComponent,
     SearchBarComponent,
     ChartAreaComponent,
-    TestchartComponent
+    TestchartComponent,
+    ArrayToCsvPipe
   ],
   imports: [
     BrowserModule,

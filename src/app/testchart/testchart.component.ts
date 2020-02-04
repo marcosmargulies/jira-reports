@@ -38,9 +38,11 @@ export class TestchartComponent implements OnInit {
 
   getDataFromJIRA() {
     this.dataService.getDaysPerStatus(this.query).subscribe(data => {
+      this.jiraResult = data;
+
       console.log("tickets from jira:");
-      console.dir(data);
-      this.pretifyJiraData(data);
+      console.dir(this.jiraResult);
+      this.pretifyJiraData(this.jiraResult);
       this.refreshChart();
       console.log(this.parseSource());
     });
@@ -49,6 +51,7 @@ export class TestchartComponent implements OnInit {
   usedStatus = [];
   unusedStatus = [];
   private datasource = [];
+  jiraResult = [];
 
   private parseSource(): GoogleChartInterface["dataTable"] {
     let res: GoogleChartInterface["dataTable"] = [];

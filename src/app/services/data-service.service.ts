@@ -1,25 +1,25 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class DataService {
   private headers: HttpHeaders = new HttpHeaders({
-    'Content-type': 'application/json'
+    "Content-type": "application/json"
   });
-  private jiraUrl = 'https://jira.ryanair.com:8443/rest/api/2/';
+  private jiraUrl = "https://jira.ryanair.com:8443/rest/api/2/";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   private getIssues(jqlString: string): Observable<any> {
     // return this.http.get('./assets/json/jiramock.json');
     return this.post(`${this.jiraUrl}search`, {
       jql: jqlString,
       maxResults: 100,
-      expand: ['changelog', 'names']
+      expand: ["changelog", "names"]
     });
   }
 
@@ -46,16 +46,19 @@ export class DataService {
             updated: issue.fields.updated,
             issuetype: issue.fields.issuetype.name,
             project: issue.fields.project.name,
-            team: issue.fields.customfield_11716.value,
-            estimate: issue.fields.customfield_10002,
+            //team: issue.fields.customfield_11716.value,
+            //estimate: issue.fields.customfield_10002,
             status: issue.fields.status.name,
             statusId: issue.fields.status.id,
-            statusHistory: (function (changelog) {
+            resolution: issue.fields.resolution
+              ? issue.fields.resolution.name
+              : "",
+            statusHistory: (function(changelog) {
               const filteredStatusHistory: Array<any> = [];
               const statusHistory: Array<any> = [];
               changelog.histories.forEach(history => {
                 const statusHistoryItem = history.items.filter(
-                  historyItem => historyItem.field === 'status'
+                  historyItem => historyItem.field === "status"
                 );
                 if (statusHistoryItem.length > 0) {
                   statusHistoryItem.created = history.created;
@@ -64,20 +67,30 @@ export class DataService {
               });
               for (let _i = 0; _i < filteredStatusHistory.length; _i++) {
                 const status = filteredStatusHistory[_i];
-                const fromDt = statusHistory.length > 0 ? statusHistory[statusHistory.length - 1].toDateTime : issue.fields.created;
+                const fromDt =
+                  statusHistory.length > 0
+                    ? statusHistory[statusHistory.length - 1].toDateTime
+                    : issue.fields.created;
 
                 const sh = {
                   fromDateTime: fromDt,
                   toDateTime: status.created,
                   transitionDurationHours: 0,
                   transitionDurationDays: 0,
-                  from: status[0]['fromString'],
-                  to: status[0]['toString']
+                  from: status[0]["fromString"],
+                  to: status[0]["toString"]
                 };
                 sh.transitionDurationHours =
-                  Math.abs(new Date(sh.toDateTime).getTime() - new Date(sh.fromDateTime).getTime()) / (1000 * 60 * 60);
+                  Math.abs(
+                    new Date(sh.toDateTime).getTime() -
+                      new Date(sh.fromDateTime).getTime()
+                  ) /
+                  (1000 * 60 * 60);
                 sh.transitionDurationDays =
-                  Math.abs(new Date(sh.toDateTime).getTime() - new Date(sh.fromDateTime).getTime()) / 86400000;
+                  Math.abs(
+                    new Date(sh.toDateTime).getTime() -
+                      new Date(sh.fromDateTime).getTime()
+                  ) / 86400000;
 
                 // const sh = this.createIssueLog(fromDt, status.created, status[0]['fromString'], status[0]['toString']);
                 statusHistory.push(sh);
@@ -88,13 +101,20 @@ export class DataService {
                     toDateTime: Date.now(),
                     transitionDurationHours: 0,
                     transitionDurationDays: 0,
-                    from: status[0]['toString'],
+                    from: status[0]["toString"],
                     to: null
                   };
                   shLast.transitionDurationHours =
-                    Math.abs(new Date(shLast.toDateTime).getTime() - new Date(shLast.fromDateTime).getTime()) / (1000 * 60 * 60);
+                    Math.abs(
+                      new Date(shLast.toDateTime).getTime() -
+                        new Date(shLast.fromDateTime).getTime()
+                    ) /
+                    (1000 * 60 * 60);
                   shLast.transitionDurationDays =
-                    Math.abs(new Date(shLast.toDateTime).getTime() - new Date(shLast.fromDateTime).getTime()) / 86400000;
+                    Math.abs(
+                      new Date(shLast.toDateTime).getTime() -
+                        new Date(shLast.fromDateTime).getTime()
+                    ) / 86400000;
 
                   // const shLast = this.createIssueLog(this.createIssueLog(status.created, Date.now(), status[0]['toString'], null));
                   statusHistory.push(shLast);
@@ -140,5 +160,4 @@ export class DataService {
   }
 
   */
-
 }
