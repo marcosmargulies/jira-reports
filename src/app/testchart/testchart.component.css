@@ -17,6 +17,14 @@ canvas {
   padding: 10px;
 }
 
+#selectContainer {
+  display: inline-block;
+}
+.selection {
+  display: inline-block;
+  border: 1px;
+}
+
 .pop {
   height: 30px;
   width: 90%;

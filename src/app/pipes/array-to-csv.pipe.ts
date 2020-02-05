@@ -5,7 +5,7 @@ import { DatePipe } from "@angular/common";
   name: "arrayToCsvPipe"
 })
 export class ArrayToCsvPipe extends DatePipe implements PipeTransform {
-  transform(value: Array<any>, args?: any): any {
+  transform(value: Array<any>, args?: any): string {
     if (value) {
       let statuses = [];
       let dataSource = [];
@@ -32,20 +32,43 @@ export class ArrayToCsvPipe extends DatePipe implements PipeTransform {
         dataSource.push(item);
       });
 
-      let response = `ID,Link,Name,${statuses.join(
-        ","
-      )},Type,Status,Resolution\n`;
+      let statusHeader = "";
+      if (args === "all") {
+        statuses.forEach(status => {
+          statusHeader += `${status} Date,${status} Time,`;
+        });
+      } else {
+        statusHeader = statuses.join(",") + ",";
+      }
+      let response = `ID,Link,Name,${statusHeader}Type,Status,Resolution\n`;
 
       dataSource.forEach(item => {
-        let test = "";
+        let statusColumns = "";
         statuses.forEach(status => {
-          test +=
-            (item.data[status]
-              ? super.transform(item.data[status], "yyyy-MM-dd hh:mm:ss")
-              : "") + ",";
+          switch (args) {
+            case "all":
+              statusColumns += "IMPLEMENT,";
+              break;
+            case "time":
+              statusColumns += "IMPLEMENT,";
+              break;
+            case "dateandtime":
+              statusColumns +=
+                (item.data[status]
+                  ? super.transform(item.data[status], "yyyy-MM-dd hh:mm:ss")
+                  : "") + ",";
+              break;
+            case "date":
+            default:
+              statusColumns +=
+                (item.data[status]
+                  ? super.transform(item.data[status], "yyyyMMdd")
+                  : "") + ",";
+              break;
+          }
         });
 
-        response += `${item.key},https://jira.ryanair.com:8443/browse/${item.key},${item.title},${test},${item.type},${item.status}${item.resolution}\n`;
+        response += `${item.key},https://smith-nephew.atlassian.net/browse/${item.key},${item.title},${statusColumns}${item.type},${item.status},${item.resolution}\n`;
       });
 
       return response;

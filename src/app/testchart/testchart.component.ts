@@ -21,11 +21,16 @@ import { DataService } from "../services/data-service.service";
 })
 export class TestchartComponent implements OnInit {
   query = "assignee=currentUser()";
+  outputType = "date";
 
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
     this.getDataFromJIRA();
+  }
+
+  radioChanged(e: any) {
+    this.outputType = e.target.value;
   }
 
   public mouseOver(event: ChartMouseOverEvent) {

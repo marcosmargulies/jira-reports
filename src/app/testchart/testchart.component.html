@@ -54,7 +54,51 @@
 </div>
 
 <div>
-  <textarea cols="100" rows="12" wrap="off">{{
-    jiraResult | arrayToCsvPipe
+  <fieldset id="selectContainer">
+    <legend>Selecting output type</legend>
+    <div class="selection">
+      <input
+        (change)="radioChanged($event)"
+        type="radio"
+        name="outputType"
+        id="outputDate"
+        value="date"
+        checked="checked"
+      />
+      <label for="outputDate">Date (YYYMMDD)</label>
+    </div>
+    <div class="selection">
+      <input
+        (change)="radioChanged($event)"
+        type="radio"
+        name="outputType"
+        id="outputDateAndTime"
+        value="dateandtime"
+      />
+      <label for="outputDateAndTime">Date (YYYMMDD HH:mm:ss)</label>
+    </div>
+    <div class="selection">
+      <input
+        type="radio"
+        (change)="radioChanged($event)"
+        name="outputType"
+        id="outputType"
+        value="time"
+      />
+      <label for="outputHour">Time</label>
+    </div>
+    <div class="selection">
+      <input
+        type="radio"
+        (change)="radioChanged($event)"
+        name="outputType"
+        id="outputAll"
+        value="all"
+      />
+      <label for="outputDateAndTime">All</label>
+    </div>
+  </fieldset>
+  <textarea cols="100" rows="12" wrap="off" readonly>{{
+    jiraResult | arrayToCsvPipe: outputType
   }}</textarea>
 </div>
