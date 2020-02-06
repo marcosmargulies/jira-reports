@@ -11,13 +11,16 @@ export class ArrayToCsvPipe extends DatePipe implements PipeTransform {
       let dataSource = [];
 
       value.forEach(element => {
-        let localData = new Object();
+        let localDataDateTime = new Object();
+        let localDataTime = new Object();
+
         element.statusHistory.forEach(history => {
           // Add new status to total statuses array
           if (statuses.indexOf(history.from) < 0) {
             statuses.push(history.from);
           }
-          localData[history.from] = history.fromDateTime;
+          localDataDateTime[history.from] = history.fromDateTime;
+          localDataTime[history.from] = history.transitionDurationHours;
         });
 
         let item = {
@@ -26,7 +29,8 @@ export class ArrayToCsvPipe extends DatePipe implements PipeTransform {
           status: element.status,
           type: element.issuetype,
           resolution: element.resolution,
-          data: localData
+          dateTime: localDataDateTime,
+          time: localDataTime
         };
 
         dataSource.push(item);
@@ -47,22 +51,35 @@ export class ArrayToCsvPipe extends DatePipe implements PipeTransform {
         statuses.forEach(status => {
           switch (args) {
             case "all":
-              statusColumns += "IMPLEMENT,";
+              statusColumns +=
+                (item.dateTime[status]
+                  ? super.transform(
+                      item.dateTime[status],
+                      "yyyy-MM-dd hh:mm:ss"
+                    )
+                  : "") +
+                "," +
+                (item.time[status] ? item.time[status].toFixed(2) : "") +
+                ",";
               break;
             case "time":
-              statusColumns += "IMPLEMENT,";
+              statusColumns +=
+                (item.time[status] ? item.time[status].toFixed(2) : "") + ",";
               break;
             case "dateandtime":
               statusColumns +=
-                (item.data[status]
-                  ? super.transform(item.data[status], "yyyy-MM-dd hh:mm:ss")
+                (item.dateTime[status]
+                  ? super.transform(
+                      item.dateTime[status],
+                      "yyyy-MM-dd hh:mm:ss"
+                    )
                   : "") + ",";
               break;
             case "date":
             default:
               statusColumns +=
-                (item.data[status]
-                  ? super.transform(item.data[status], "yyyyMMdd")
+                (item.dateTime[status]
+                  ? super.transform(item.dateTime[status], "yyyyMMdd")
                   : "") + ",";
               break;
           }
