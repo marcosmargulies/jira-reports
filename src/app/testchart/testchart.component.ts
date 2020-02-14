@@ -42,6 +42,10 @@ export class TestchartComponent implements OnInit {
   }
 
   getDataFromJIRA() {
+    this.usedStatus = [];
+    this.unusedStatus = [];
+    this.jiraResult = [];
+    
     this.dataService.getDaysPerStatus(this.query).subscribe(data => {
       this.jiraResult = data;
 
