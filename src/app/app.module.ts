@@ -15,6 +15,8 @@ import { TestchartComponent } from "./testchart/testchart.component";
 import { Ng2GoogleChartsModule } from "ng2-google-charts";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { DragDropModule } from "@angular/cdk/drag-drop";
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 import { ArrayToCsvPipe } from "./pipes/array-to-csv.pipe";
 
 const appRoutes: Routes = [
@@ -45,9 +47,11 @@ const appRoutes: Routes = [
     Ng2GoogleChartsModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
-    DragDropModule
+    DragDropModule,
+    MatInputModule,
+    MatButtonModule
   ],
-  providers: [DataService],
+  providers: [DataService, ArrayToCsvPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

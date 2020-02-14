@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { ArrayToCsvPipe } from '../pipes/array-to-csv.pipe';
 import { GoogleChartInterface } from "ng2-google-charts/google-charts-interfaces";
 import {
   DataPointPosition,
@@ -23,7 +24,7 @@ export class TestchartComponent implements OnInit {
   query = "assignee=currentUser()";
   outputType = "date";
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private arrayToCsv: ArrayToCsvPipe) {}
 
   ngOnInit() {
     this.getDataFromJIRA();
@@ -42,6 +43,10 @@ export class TestchartComponent implements OnInit {
   }
 
   getDataFromJIRA() {
+    this.usedStatus = [];
+    this.unusedStatus = [];
+    this.jiraResult = [];
+    
     this.dataService.getDaysPerStatus(this.query).subscribe(data => {
       this.jiraResult = data;
 
@@ -95,12 +100,23 @@ export class TestchartComponent implements OnInit {
     //firstRowIsData: true,
     options: {
       title: "Cycle time by JIRA keys",
+      width: 1300,
+      height: 600,
       vAxis: { title: "Time (in days)" },
       hAxis: { title: "Status" },
       seriesType: "bars",
       series: { 0: { type: "line" } }
     }
   };
+
+  downloadCsv(fileContent: string[], fileName: string) {
+    let test = this.arrayToCsv.transform(fileContent, this.outputType);
+    let hiddenElement = document.createElement('a');
+    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(test);
+    hiddenElement.target = '_blank';
+    hiddenElement.download = fileName + '.csv';
+    hiddenElement.click();
+  }  
 
   drop(event: CdkDragDrop<string[]>) {
     if (

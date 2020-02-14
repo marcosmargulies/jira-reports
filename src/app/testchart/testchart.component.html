@@ -101,4 +101,13 @@
   <textarea cols="100" rows="12" wrap="off" readonly>{{
     jiraResult | arrayToCsvPipe: outputType
   }}</textarea>
+  
+  <mat-form-field>
+    <mat-label>Csv file name</mat-label>
+    <input matInput placeholder="My project" [(ngModel)]="fileName">
+  </mat-form-field>
+  
+  <button mat-flat-button color="primary" (click)="downloadCsv(jiraResult, fileName)" [disabled]="!fileName">
+    Download csv file
+  </button>
 </div>
