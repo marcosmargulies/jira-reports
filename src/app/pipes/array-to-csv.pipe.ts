@@ -23,6 +23,11 @@ export class ArrayToCsvPipe extends DatePipe implements PipeTransform {
           localDataTime[history.from] = history.transitionDurationHours;
         });
 
+        // Delete commas in descriptions 
+        if (element.title.indexOf(',') != -1) {
+          element.title = element.title.replace(',', ' ');
+        }
+
         let item = {
           key: element.key,
           title: element.title,
