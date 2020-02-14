@@ -99,6 +99,8 @@ export class TestchartComponent implements OnInit {
     //firstRowIsData: true,
     options: {
       title: "Cycle time by JIRA keys",
+      width: 1300,
+      height: 600,
       vAxis: { title: "Time (in days)" },
       hAxis: { title: "Status" },
       seriesType: "bars",
