@@ -1,17 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { ArrayToCsvPipe } from '../pipes/array-to-csv.pipe';
 import { GoogleChartInterface } from "ng2-google-charts/google-charts-interfaces";
-import {
-  DataPointPosition,
-  BoundingBox,
-  ChartHTMLTooltip,
-  ChartMouseOverEvent
-} from "ng2-google-charts";
-import {
-  CdkDragDrop,
-  moveItemInArray,
-  transferArrayItem
-} from "@angular/cdk/drag-drop";
+import { DataPointPosition, BoundingBox, ChartHTMLTooltip } from "ng2-google-charts";
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
 import { ɵELEMENT_PROBE_PROVIDERS } from "@angular/platform-browser";
 import { DataService } from "../services/data-service.service";
 
@@ -20,48 +14,95 @@ import { DataService } from "../services/data-service.service";
   templateUrl: "./testchart.component.html",
   styleUrls: ["./testchart.component.css"]
 })
+
 export class TestchartComponent implements OnInit {
-  query = "assignee=currentUser()";
-  outputType = "date";
+  private datasource: any[]= [];
+  usedStatus: any[] = [];
+  unusedStatus: any[] = [];
+  jiraResult: any[] = [];
+  jiraResultNoPipe: any[] = [];
+
+  tableHeaders: string[] = [];
+  tableData = new MatTableDataSource();
+
+  queryString: string = '';
+
+  outputType: string = '';
+  outputList: any[] = [
+    {
+      value: 'date',
+      label: 'Date (YYYYMMDD)'
+    },
+    {
+      value: 'dateandtime',
+      label: 'Date (YYYYMMDD HH:mm:ss)'
+    },
+    {
+      value: 'time',
+      label: 'Time'
+    },
+    {
+      value: 'all',
+      label: 'All'
+    }
+  ];
 
   constructor(private dataService: DataService, private arrayToCsv: ArrayToCsvPipe) {}
 
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
+
   ngOnInit() {
-    this.getDataFromJIRA();
+    this.queryString = 'project = "Ops Report" AND sprint in openSprints() AND type != Sub-task AND type != "Test Bug"';
+    this.outputType = this.outputList[0].value;
+
+    this.getDataFromJIRA(this.queryString);
   }
 
-  radioChanged(e: any) {
-    this.outputType = e.target.value;
+  jiraSearch(querString: string) {
+    this.getDataFromJIRA(querString);
   }
 
-  public mouseOver(event: ChartMouseOverEvent) {
-    //console.log(event, event.columnLabel, ": ", event.value);
-  }
-  onEnter(value: string) {
-    this.query = value;
-    this.getDataFromJIRA();
-  }
-
-  getDataFromJIRA() {
+  getDataFromJIRA(querString: string) {
+    this.datasource = [];
     this.usedStatus = [];
     this.unusedStatus = [];
     this.jiraResult = [];
-    
-    this.dataService.getDaysPerStatus(this.query).subscribe(data => {
-      this.jiraResult = data;
+    this.jiraResultNoPipe = [];
 
-      console.log("tickets from jira:");
-      console.dir(this.jiraResult);
-      this.pretifyJiraData(this.jiraResult);
+    this.dataService.getDaysPerStatus(querString).subscribe(data => {
+      this.jiraResult = data;
+      this.jiraResultNoPipe = data;
+
+      console.log('----tickets from jira');
+      console.dir(data);
+
+      this.datasource = this.pretifyJiraData(data);
+      console.log('----datasource');
+      console.log(this.datasource);
+
+      this.usedStatus = this.getStatus(data);
+      console.log('----usedStatus');
+      console.log(this.datasource);
+
+      this.createTable(data, this.usedStatus);
       this.refreshChart();
-      console.log(this.parseSource());
     });
   }
 
-  usedStatus = [];
-  unusedStatus = [];
-  private datasource = [];
-  jiraResult = [];
+  createTable(jiraData: any, currentStatus: string[]) {
+    let parseData = this.parseTableData(jiraData);
+    this.tableHeaders = this.getTableHeaders(jiraData, currentStatus);
+
+    this.tableData = new MatTableDataSource(parseData);
+    this.tableData.paginator = this.paginator;
+    this.tableData.sort = this.sort;
+
+    console.log('----tableHeaders');
+    console.log(this.tableHeaders);
+    console.log('----tableData');
+    console.log(this.tableData);
+  }
 
   private parseSource(): GoogleChartInterface["dataTable"] {
     let res: GoogleChartInterface["dataTable"] = [];
@@ -99,13 +140,21 @@ export class TestchartComponent implements OnInit {
     dataTable: this.parseSource(),
     //firstRowIsData: true,
     options: {
-      title: "Cycle time by JIRA keys",
-      width: 1300,
+      title: 'Cycle time by JIRA keys',
+      width: '100%',
       height: 600,
-      vAxis: { title: "Time (in days)" },
-      hAxis: { title: "Status" },
-      seriesType: "bars",
-      series: { 0: { type: "line" } }
+      vAxis: { 
+        title: 'Time (in days)' 
+      },
+      hAxis: { 
+        title: 'Status' 
+      },
+      seriesType: 'bars',
+      series: { 
+        0: { 
+          type: 'line' 
+        } 
+      }
     }
   };
 
@@ -135,9 +184,11 @@ export class TestchartComponent implements OnInit {
     } else {
       moveItemInArray(this.usedStatus, event.previousIndex, event.currentIndex);
     }
+    console.log('*/*/*/*/*/*/* usedStatus */*/*/*/*/*/*');
     console.log(this.usedStatus);
 
     this.refreshChart();
+    this.createTable(this.jiraResult, this.usedStatus);
   }
 
   refreshChart() {
@@ -148,27 +199,79 @@ export class TestchartComponent implements OnInit {
     ccComponent.draw();
   }
 
-  private pretifyJiraData(jiraData: any) {
-    this.datasource = [];
-    this.usedStatus = [];
+  getStatus(jiraData: any) {
+    let statusList = [];
 
     jiraData.forEach(element => {
-      let localData = new Object();
       element.statusHistory.forEach(history => {
-        // Add new status to total statuses array
-        if (this.usedStatus.indexOf(history.from) < 0) {
-          this.usedStatus.push(history.from);
+        if (statusList.indexOf(history.from) < 0) {
+          statusList.push(history.from);
         }
-        localData[history.from] = history.transitionDurationDays;
       });
+    });
 
+    return statusList;
+  }
+
+  pretifyJiraData(jiraData: any) {
+    let parseData = [];
+
+    jiraData.forEach(element => {
       let item = {
         key: element.key,
         title: element.title,
         status: element.status,
-        data: localData
+        data: {}
       };
-      this.datasource.push(item);
+
+      element.statusHistory.forEach(history => {
+        item.data[history.from] = history.transitionDurationDays;
+      });
+
+      parseData.push(item);
     });
+
+    return parseData;
+  }
+
+  parseTableData(jiraData: any) {
+    let tableInformation = [];
+
+    jiraData.forEach(element => {
+      let test = {
+        key: element.key,
+        title: element.title,
+        project: element.project,
+        issueType: element.issuetype,
+        status: element.status
+      };
+
+      element.statusHistory.forEach(history => {
+        test[history.from] = Math.round(history.transitionDurationHours * 100) / 100;
+      });
+
+      tableInformation.push(test);
+    });
+
+    return tableInformation;
+  }
+
+  getTableHeaders(jiraData: any, currentStatus: string[]) {
+    let headersList = ['key', 'title', 'project', 'issueType', 'status'];
+
+    jiraData.forEach(element => {
+      element.statusHistory.forEach(history => {
+        if (headersList.indexOf(history.from) < 0 && currentStatus.indexOf(history.from) >= 0) {
+          headersList.push(history.from);
+        }
+      });
+    });
+
+    return headersList;
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.tableData.filter = filterValue.trim().toLowerCase();
   }
 }

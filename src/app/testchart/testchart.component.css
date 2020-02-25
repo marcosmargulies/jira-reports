@@ -43,3 +43,28 @@ canvas {
 .cdk-drag-animating {
   transition: transform 300ms cubic-bezier(0, 0, 0.2, 1);
 }
+
+.table-container {
+  display: block;
+  height: 500px;
+  overflow: auto;
+}
+
+.table-container--table {
+  width: 90%;
+}
+
+.csvPreview {
+  width: 80%;
+  height: 350px;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.radio-button {
+  margin: 5px;
+}

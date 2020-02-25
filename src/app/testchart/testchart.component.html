@@ -1,113 +1,129 @@
-<div>
-  JIRA query
-  <input
-    #box
-    (keyup.enter)="onEnter(box.value)"
-    width="400px"
-    value="{{ query }}"
-  />
+<div style="display: block; box-sizing: border-box; width: 100%; padding: 0 20px 50px;">
   <a routerLink="/report" routerLinkActive="active">Old Version</a>
-</div>
+  <br>
+  <br>
+  <br>
 
-<p>
-  <google-chart
-    [data]="chartData"
-    (mouseOver)="mouseOver($event)"
-  ></google-chart>
-</p>
+  <div style="display: flex; box-sizing: border-box; width: 100%; justify-content: space-between; align-items: center;">
+    <mat-form-field style="box-sizing: border-box; width: 85%;">
+      <mat-label>JIRA query</mat-label>
+      <input matInput placeholder="JIRA query" [(ngModel)]="queryString">
+    </mat-form-field>  
+    <button style="box-sizing: border-box; width: 10%; height: 35px;" mat-flat-button color="primary" (click)="jiraSearch(queryString)" [disabled]="!queryString">
+      <mat-icon>search</mat-icon>
+      Search!
+    </button>
+  </div>
+  
+  <div>
+    <google-chart [data]="chartData"></google-chart>
+  </div>
 
-<div style="display: flex">
-  <div
-    id="cdk-drop-list-used"
-    class="border"
-    cdkDropList
-    [cdkDropListData]="usedStatus"
-    [cdkDropListConnectedTo]="secondList"
-    #firstList="cdkDropList"
-    (cdkDropListDropped)="drop($event)"
-    style="width: 50%"
-  >
-    <p>
-      Used Status (drag and drop to reorder)
-    </p>
-    <div *ngFor="let status of usedStatus" class="pop" cdkDrag>
-      {{ status }}
+  <div style="display: flex">
+    <div
+      id="cdk-drop-list-used"
+      class="border"
+      cdkDropList
+      [cdkDropListData]="usedStatus"
+      [cdkDropListConnectedTo]="secondList"
+      #firstList="cdkDropList"
+      (cdkDropListDropped)="drop($event)"
+      style="width: 50%"
+    >
+      <p>
+        Used Status (drag and drop to reorder)
+      </p>
+      <div *ngFor="let status of usedStatus" class="pop" cdkDrag>
+        {{ status }}
+      </div>
+    </div>
+    <div
+      id="cdk-drop-list-unused"
+      class="border"
+      cdkDropList
+      [cdkDropListData]="unusedStatus"
+      [cdkDropListConnectedTo]="firstList"
+      #secondList="cdkDropList"
+      (cdkDropListDropped)="drop($event)"
+      style="width: 50%"
+    >
+      <p>
+        Not used Status
+      </p>
+      <div *ngFor="let status of unusedStatus" class="pop" cdkDrag>
+        {{ status }}
+      </div>
     </div>
   </div>
-  <div
-    id="cdk-drop-list-unused"
-    class="border"
-    cdkDropList
-    [cdkDropListData]="unusedStatus"
-    [cdkDropListConnectedTo]="firstList"
-    #secondList="cdkDropList"
-    (cdkDropListDropped)="drop($event)"
-    style="width: 50%"
-  >
-    <p>
-      Not used Status
-    </p>
-    <div *ngFor="let status of unusedStatus" class="pop" cdkDrag>
-      {{ status }}
+
+  <div>
+    <!-- Radio buttons -->
+    <div>
+      <label id="output-type">Selecting output type</label>
+      <mat-radio-group
+        aria-labelledby="output-type"
+        class="radio-group"
+        [(ngModel)]="outputType">
+        <mat-radio-button class="radio-button" *ngFor="let output of outputList" [value]="output.value">
+          {{output.label}}
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <br>
+    USES PIPE
+    <br>
+    <textarea class="csvPreview" wrap="off" readonly>
+      {{ jiraResult | arrayToCsvPipe: outputType }}
+    </textarea>
+
+    <br>
+    <br>
+    <br>
+
+    DOES NOT USE PIPE
+    <br>
+    <textarea class="csvPreview" wrap="off" readonly>
+      {{ jiraResultNoPipe }}
+    </textarea>
+
+    <br>
+    
+    <mat-form-field>
+      <mat-label>Csv file name</mat-label>
+      <input matInput placeholder="My project" [(ngModel)]="fileName">
+    </mat-form-field>  
+    <button mat-flat-button color="primary" (click)="downloadCsv(jiraResult, fileName)" [disabled]="!fileName">
+      Download csv file
+    </button>
+
+    <br>
+
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Project">
+    </mat-form-field>
+    <div class="table-container mat-elevation-z8">
+      <table mat-table class="table-container--table" matSort [dataSource]="tableData">
+        <ng-container *ngFor="let header of tableHeaders; let i = index" matColumnDef="{{header}}">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            <span *ngIf="header === 'key' || header === 'title' || header === 'project' || header === 'issueType' || header === 'status'; else headerHours">{{header}}</span>
+            <ng-template #headerHours>
+              {{header}} (h)
+            </ng-template>
+          </th>
+            <td mat-cell *matCellDef="let element"> 
+              <a *ngIf="header === 'key'; else columnNotKey" href="https://jira.ryanair.com/browse/{{element.key}}" target="_blank">{{element.key}}</a>
+              <ng-template #columnNotKey>
+                {{element[header]}}
+              </ng-template>
+            </td>
+            </ng-container>
+        <tr mat-header-row *matHeaderRowDef="tableHeaders; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: tableHeaders;"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="10" showFirstLastButtons></mat-paginator>
     </div>
   </div>
-</div>
-
-<div>
-  <fieldset id="selectContainer">
-    <legend>Selecting output type</legend>
-    <div class="selection">
-      <input
-        (change)="radioChanged($event)"
-        type="radio"
-        name="outputType"
-        id="outputDate"
-        value="date"
-        checked="checked"
-      />
-      <label for="outputDate">Date (YYYMMDD)</label>
-    </div>
-    <div class="selection">
-      <input
-        (change)="radioChanged($event)"
-        type="radio"
-        name="outputType"
-        id="outputDateAndTime"
-        value="dateandtime"
-      />
-      <label for="outputDateAndTime">Date (YYYMMDD HH:mm:ss)</label>
-    </div>
-    <div class="selection">
-      <input
-        type="radio"
-        (change)="radioChanged($event)"
-        name="outputType"
-        id="outputType"
-        value="time"
-      />
-      <label for="outputHour">Time</label>
-    </div>
-    <div class="selection">
-      <input
-        type="radio"
-        (change)="radioChanged($event)"
-        name="outputType"
-        id="outputAll"
-        value="all"
-      />
-      <label for="outputDateAndTime">All</label>
-    </div>
-  </fieldset>
-  <textarea cols="100" rows="12" wrap="off" readonly>{{
-    jiraResult | arrayToCsvPipe: outputType
-  }}</textarea>
-  
-  <mat-form-field>
-    <mat-label>Csv file name</mat-label>
-    <input matInput placeholder="My project" [(ngModel)]="fileName">
-  </mat-form-field>
-  
-  <button mat-flat-button color="primary" (click)="downloadCsv(jiraResult, fileName)" [disabled]="!fileName">
-    Download csv file
-  </button>
 </div>
