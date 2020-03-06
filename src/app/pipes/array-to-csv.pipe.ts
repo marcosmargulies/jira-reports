@@ -25,7 +25,7 @@ export class ArrayToCsvPipe extends DatePipe implements PipeTransform {
 
         // Delete commas in descriptions 
         if (element.title.indexOf(',') != -1) {
-          element.title = element.title.replace(',', ' ');
+          element.title = element.title.split(',').join('');
         }
 
         let item = {

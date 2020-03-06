@@ -20,10 +20,12 @@ export class TestchartComponent implements OnInit {
   usedStatus: any[] = [];
   unusedStatus: any[] = [];
   jiraResult: any[] = [];
-  jiraResultNoPipe: any[] = [];
+  jiraResultNoPipe: string = '';
 
   tableHeaders: string[] = [];
   tableData = new MatTableDataSource();
+
+  jiraUrl: string = 'https://jira.ryanair.com/browse/';
 
   queryString: string = '';
 
@@ -59,20 +61,15 @@ export class TestchartComponent implements OnInit {
     this.getDataFromJIRA(this.queryString);
   }
 
-  jiraSearch(querString: string) {
-    this.getDataFromJIRA(querString);
-  }
-
   getDataFromJIRA(querString: string) {
     this.datasource = [];
     this.usedStatus = [];
     this.unusedStatus = [];
     this.jiraResult = [];
-    this.jiraResultNoPipe = [];
+    this.jiraResultNoPipe = '';
 
     this.dataService.getDaysPerStatus(querString).subscribe(data => {
       this.jiraResult = data;
-      this.jiraResultNoPipe = data;
 
       console.log('----tickets from jira');
       console.dir(data);
@@ -86,8 +83,45 @@ export class TestchartComponent implements OnInit {
       console.log(this.datasource);
 
       this.createTable(data, this.usedStatus);
+      this.jiraResultNoPipe = this.parseJiraResultsNoPipe();
+      
       this.refreshChart();
     });
+  }
+
+  pretifyJiraData(jiraData: any) {
+    let parseData = [];
+
+    jiraData.forEach(element => {
+      let item = {
+        key: element.key,
+        title: element.title,
+        status: element.status,
+        data: {}
+      };
+
+      element.statusHistory.forEach(history => {
+        item.data[history.from] = history.transitionDurationDays;
+      });
+
+      parseData.push(item);
+    });
+
+    return parseData;
+  }
+
+  getStatus(jiraData: any) {
+    let statusList = [];
+
+    jiraData.forEach(element => {
+      element.statusHistory.forEach(history => {
+        if (statusList.indexOf(history.from) < 0) {
+          statusList.push(history.from);
+        }
+      });
+    });
+
+    return statusList;
   }
 
   createTable(jiraData: any, currentStatus: string[]) {
@@ -102,6 +136,59 @@ export class TestchartComponent implements OnInit {
     console.log(this.tableHeaders);
     console.log('----tableData');
     console.log(this.tableData);
+  }
+
+  parseJiraResultsNoPipe() {
+    let jiraResults = this.tableHeaders.join(',');
+
+    this.tableData.data.forEach(jiraDataRow => {
+      jiraResults += '\n';
+      this.tableHeaders.forEach(function(header, i) {
+        jiraDataRow['title'] = (jiraDataRow['title'].indexOf(',') != -1) ? jiraDataRow['title'].split(',').join('') : jiraDataRow['title'];
+        jiraResults += (i !== 0) ? ',' : '';
+        jiraResults += (jiraDataRow[header]) ? `${jiraDataRow[header]}` : '';
+      });
+    });
+
+    return jiraResults;
+  }
+
+  parseTableData(jiraData: any) {
+    let tableInformation = [];
+
+    jiraData.forEach(element => {
+      let test = {
+        key: element.key,
+        link: this.jiraUrl + element.key,
+        title: element.title,
+        project: element.project,
+        issueType: element.issuetype,
+        status: element.status,
+        resolution: element.resolution
+      };
+
+      element.statusHistory.forEach(history => {
+        test[history.from] = Math.round(history.transitionDurationHours * 100) / 100;
+      });
+
+      tableInformation.push(test);
+    });
+
+    return tableInformation;
+  }
+
+  getTableHeaders(jiraData: any, currentStatus: string[]) {
+    let headersList = ['key', 'link', 'title', 'project', 'issueType', 'status', 'resolution'];
+
+    jiraData.forEach(element => {
+      element.statusHistory.forEach(history => {
+        if (headersList.indexOf(history.from) < 0 && currentStatus.indexOf(history.from) >= 0) {
+          headersList.push(history.from);
+        }
+      });
+    });
+
+    return headersList;
   }
 
   private parseSource(): GoogleChartInterface["dataTable"] {
@@ -189,6 +276,7 @@ export class TestchartComponent implements OnInit {
 
     this.refreshChart();
     this.createTable(this.jiraResult, this.usedStatus);
+    this.jiraResultNoPipe = this.parseJiraResultsNoPipe();
   }
 
   refreshChart() {
@@ -197,77 +285,6 @@ export class TestchartComponent implements OnInit {
     //let ccWrapper = ccComponent.wrapper;
     //force a redraw
     ccComponent.draw();
-  }
-
-  getStatus(jiraData: any) {
-    let statusList = [];
-
-    jiraData.forEach(element => {
-      element.statusHistory.forEach(history => {
-        if (statusList.indexOf(history.from) < 0) {
-          statusList.push(history.from);
-        }
-      });
-    });
-
-    return statusList;
-  }
-
-  pretifyJiraData(jiraData: any) {
-    let parseData = [];
-
-    jiraData.forEach(element => {
-      let item = {
-        key: element.key,
-        title: element.title,
-        status: element.status,
-        data: {}
-      };
-
-      element.statusHistory.forEach(history => {
-        item.data[history.from] = history.transitionDurationDays;
-      });
-
-      parseData.push(item);
-    });
-
-    return parseData;
-  }
-
-  parseTableData(jiraData: any) {
-    let tableInformation = [];
-
-    jiraData.forEach(element => {
-      let test = {
-        key: element.key,
-        title: element.title,
-        project: element.project,
-        issueType: element.issuetype,
-        status: element.status
-      };
-
-      element.statusHistory.forEach(history => {
-        test[history.from] = Math.round(history.transitionDurationHours * 100) / 100;
-      });
-
-      tableInformation.push(test);
-    });
-
-    return tableInformation;
-  }
-
-  getTableHeaders(jiraData: any, currentStatus: string[]) {
-    let headersList = ['key', 'title', 'project', 'issueType', 'status'];
-
-    jiraData.forEach(element => {
-      element.statusHistory.forEach(history => {
-        if (headersList.indexOf(history.from) < 0 && currentStatus.indexOf(history.from) >= 0) {
-          headersList.push(history.from);
-        }
-      });
-    });
-
-    return headersList;
   }
 
   applyFilter(event: Event) {

@@ -9,7 +9,7 @@
       <mat-label>JIRA query</mat-label>
       <input matInput placeholder="JIRA query" [(ngModel)]="queryString">
     </mat-form-field>  
-    <button style="box-sizing: border-box; width: 10%; height: 35px;" mat-flat-button color="primary" (click)="jiraSearch(queryString)" [disabled]="!queryString">
+    <button style="box-sizing: border-box; width: 10%; height: 35px;" mat-flat-button color="primary" (click)="getDataFromJIRA(queryString)" [disabled]="!queryString">
       <mat-icon>search</mat-icon>
       Search!
     </button>
@@ -107,13 +107,13 @@
       <table mat-table class="table-container--table" matSort [dataSource]="tableData">
         <ng-container *ngFor="let header of tableHeaders; let i = index" matColumnDef="{{header}}">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>
-            <span *ngIf="header === 'key' || header === 'title' || header === 'project' || header === 'issueType' || header === 'status'; else headerHours">{{header}}</span>
+            <span *ngIf="header === 'key' || header === 'link' || header === 'title' || header === 'project' || header === 'issueType' || header === 'status' || header === 'resolution'; else headerHours">{{header}}</span>
             <ng-template #headerHours>
               {{header}} (h)
             </ng-template>
           </th>
             <td mat-cell *matCellDef="let element"> 
-              <a *ngIf="header === 'key'; else columnNotKey" href="https://jira.ryanair.com/browse/{{element.key}}" target="_blank">{{element.key}}</a>
+              <a *ngIf="header === 'link'; else columnNotKey" href="{{element.link}}" target="_blank">Link</a>
               <ng-template #columnNotKey>
                 {{element[header]}}
               </ng-template>
