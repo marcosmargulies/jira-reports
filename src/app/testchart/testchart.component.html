@@ -5,19 +5,16 @@
   <br>
 
   <div style="display: flex; box-sizing: border-box; width: 100%; justify-content: space-between; align-items: center;">
-    <mat-form-field style="box-sizing: border-box; width: 85%;">
+    <mat-form-field style="box-sizing: border-box; width: 85%; min-width: 350px;">
       <mat-label>JIRA query</mat-label>
-      <input matInput placeholder="JIRA query" [(ngModel)]="queryString">
+      <input matInput placeholder="JIRA query" [(ngModel)]="queryString" (keyup.enter)="getDataFromJIRA(queryString)">
     </mat-form-field>  
-    <button style="box-sizing: border-box; width: 10%; height: 35px;" mat-flat-button color="primary" (click)="getDataFromJIRA(queryString)" [disabled]="!queryString">
+    <button style="box-sizing: border-box; width: 150px; height: 35px;" mat-flat-button color="primary" (click)="getDataFromJIRA(queryString)" [disabled]="!queryString">
       <mat-icon>search</mat-icon>
       Search!
     </button>
   </div>
   
-  <div>
-    <google-chart [data]="chartData"></google-chart>
-  </div>
 
   <div style="display: flex">
     <div
@@ -28,8 +25,7 @@
       [cdkDropListConnectedTo]="secondList"
       #firstList="cdkDropList"
       (cdkDropListDropped)="drop($event)"
-      style="width: 50%"
-    >
+      style="width: 50%">
       <p>
         Used Status (drag and drop to reorder)
       </p>
@@ -45,8 +41,7 @@
       [cdkDropListConnectedTo]="firstList"
       #secondList="cdkDropList"
       (cdkDropListDropped)="drop($event)"
-      style="width: 50%"
-    >
+      style="width: 50%">
       <p>
         Not used Status
       </p>
@@ -56,74 +51,86 @@
     </div>
   </div>
 
+  <br>
+  <br>
+  <br>
+      
   <div>
-    <!-- Radio buttons -->
-    <div>
-      <label id="output-type">Selecting output type</label>
-      <mat-radio-group
-        aria-labelledby="output-type"
-        class="radio-group"
-        [(ngModel)]="outputType">
-        <mat-radio-button class="radio-button" *ngFor="let output of outputList" [value]="output.value">
-          {{output.label}}
-        </mat-radio-button>
-      </mat-radio-group>
+    <google-chart [data]="chartData"></google-chart>
+  </div>
+
+  <br>
+  <br>
+  <br>
+
+  <div>
+    <div style="display: flex; box-sizing: border-box; width: 100%; justify-content: space-between; align-items: center;">
+      <div style="box-sizing: border-box; width: 50%; min-width: 350px;">
+        <mat-form-field style="box-sizing: border-box; width: 100%;">
+          <mat-label>Filter</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Project">
+        </mat-form-field>
+      </div>  
+      <div style="box-sizing: border-box; width: 450px; text-align: right;">
+        <label id="output-type">Output:</label>
+        <mat-radio-group
+          aria-labelledby="output-type"
+          class="radio-group"
+          [(ngModel)]="outputType"
+          (ngModelChange)="updateOutput()">
+          <mat-radio-button class="radio-button" *ngFor="let output of outputList" [value]="output.value">
+            {{output.label}}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
     </div>
-
-    <br>
-    USES PIPE
-    <br>
-    <textarea class="csvPreview" wrap="off" readonly>
-      {{ jiraResult | arrayToCsvPipe: outputType }}
-    </textarea>
-
-    <br>
-    <br>
-    <br>
-
-    DOES NOT USE PIPE
-    <br>
-    <textarea class="csvPreview" wrap="off" readonly>
-      {{ jiraResultNoPipe }}
-    </textarea>
-
-    <br>
-    
-    <mat-form-field>
-      <mat-label>Csv file name</mat-label>
-      <input matInput placeholder="My project" [(ngModel)]="fileName">
-    </mat-form-field>  
-    <button mat-flat-button color="primary" (click)="downloadCsv(jiraResult, fileName)" [disabled]="!fileName">
-      Download csv file
-    </button>
-
-    <br>
-
-    <mat-form-field>
-      <mat-label>Filter</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Project">
-    </mat-form-field>
     <div class="table-container mat-elevation-z8">
       <table mat-table class="table-container--table" matSort [dataSource]="tableData">
         <ng-container *ngFor="let header of tableHeaders; let i = index" matColumnDef="{{header}}">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>
-            <span *ngIf="header === 'key' || header === 'link' || header === 'title' || header === 'project' || header === 'issueType' || header === 'status' || header === 'resolution'; else headerHours">{{header}}</span>
-            <ng-template #headerHours>
-              {{header}} (h)
-            </ng-template>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header >
+            {{tableHeadersLabels[i].label}}
           </th>
-            <td mat-cell *matCellDef="let element"> 
-              <a *ngIf="header === 'link'; else columnNotKey" href="{{element.link}}" target="_blank">Link</a>
-              <ng-template #columnNotKey>
-                {{element[header]}}
-              </ng-template>
-            </td>
-            </ng-container>
+          <td mat-cell *matCellDef="let element"> 
+            <a *ngIf="header === 'link'; else columnNotKey" href="{{element.link}}" target="_blank">Link</a>
+            <ng-template #columnNotKey>
+              {{element[tableHeadersLabels[i].value]}}
+            </ng-template>
+          </td>
+        </ng-container>
         <tr mat-header-row *matHeaderRowDef="tableHeaders; sticky: true"></tr>
         <tr mat-row *matRowDef="let row; columns: tableHeaders;"></tr>
       </table>
 
       <mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="10" showFirstLastButtons></mat-paginator>
     </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div style="display: flex; box-sizing: border-box; width: 100%; justify-content: flex-start; align-items: center;">
+      <mat-form-field style="box-sizing: border-box; width: 350px; margin-right: 50px;">
+        <mat-label>Csv file name</mat-label>
+        <input matInput placeholder="My project" [(ngModel)]="fileName" (keyup.enter)="downloadCsv(jiraResultNoPipe, fileName)">
+      </mat-form-field>  
+      <button 
+        style="box-sizing: border-box; width: 150px; height: 35px;" 
+        mat-flat-button color="primary" 
+        (click)="downloadCsv(jiraResultNoPipe, fileName)" 
+        [disabled]="!fileName">
+        Download csv file
+      </button>
+    </div>
+
+    <br>
+<!--
+
+    <textarea class="csvPreview" wrap="off" readonly>
+      {{ jiraResult | arrayToCsvPipe: outputType }}
+    </textarea>
+-->
+    <textarea class="csvPreview" wrap="off" readonly>
+      {{ jiraResultNoPipe }}
+    </textarea>
   </div>
 </div>
