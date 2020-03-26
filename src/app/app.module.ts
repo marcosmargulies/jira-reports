@@ -15,8 +15,13 @@ import { TestchartComponent } from "./testchart/testchart.component";
 import { Ng2GoogleChartsModule } from "ng2-google-charts";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { DragDropModule } from "@angular/cdk/drag-drop";
-import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
 import { ArrayToCsvPipe } from "./pipes/array-to-csv.pipe";
 
 const appRoutes: Routes = [
@@ -48,8 +53,13 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
     DragDropModule,
+    MatButtonModule,
+    MatIconModule,
     MatInputModule,
-    MatButtonModule
+    MatPaginatorModule,
+    MatRadioModule,
+    MatSortModule,
+    MatTableModule
   ],
   providers: [DataService, ArrayToCsvPipe],
   bootstrap: [AppComponent]
